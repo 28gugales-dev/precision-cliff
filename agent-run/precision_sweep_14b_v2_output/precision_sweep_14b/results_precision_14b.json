@@ -1,0 +1,210 @@
+{
+  "q8_0": {
+    "per_seed": [
+      {
+        "seed": 42,
+        "best": 0.936,
+        "gens": 10,
+        "viable": 3,
+        "valid": 2
+      },
+      {
+        "seed": 123,
+        "best": 1.3,
+        "gens": 10,
+        "viable": 4,
+        "valid": 2
+      },
+      {
+        "seed": 456,
+        "best": 0.926,
+        "gens": 10,
+        "viable": 6,
+        "valid": 6
+      },
+      {
+        "seed": 789,
+        "best": 1.083342,
+        "gens": 10,
+        "viable": 3,
+        "valid": 3
+      },
+      {
+        "seed": 1111,
+        "best": 1.04,
+        "gens": 10,
+        "viable": 6,
+        "valid": 5
+      }
+    ],
+    "mean_best": 1.057068,
+    "pop_std_best": 0.135524,
+    "viability": "22/50",
+    "validity": "18/50",
+    "probe_scores": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "probe_valid": 0
+  },
+  "q4_k_m": {
+    "per_seed": [
+      {
+        "seed": 42,
+        "best": 1.06,
+        "gens": 10,
+        "viable": 7,
+        "valid": 7
+      },
+      {
+        "seed": 123,
+        "best": 1.3,
+        "gens": 10,
+        "viable": 3,
+        "valid": 3
+      },
+      {
+        "seed": 456,
+        "best": 0.936,
+        "gens": 10,
+        "viable": 4,
+        "valid": 4
+      },
+      {
+        "seed": 789,
+        "best": 1.04,
+        "gens": 10,
+        "viable": 5,
+        "valid": 4
+      },
+      {
+        "seed": 1111,
+        "best": 0.93285,
+        "gens": 10,
+        "viable": 3,
+        "valid": 2
+      }
+    ],
+    "mean_best": 1.05377,
+    "pop_std_best": 0.133678,
+    "viability": "22/50",
+    "validity": "20/50",
+    "probe_scores": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "probe_valid": 0
+  },
+  "q3_k_m": {
+    "per_seed": [
+      {
+        "seed": 42,
+        "best": 1.04,
+        "gens": 10,
+        "viable": 4,
+        "valid": 4
+      },
+      {
+        "seed": 123,
+        "best": 1.3,
+        "gens": 10,
+        "viable": 6,
+        "valid": 4
+      },
+      {
+        "seed": 456,
+        "best": 0.962,
+        "gens": 10,
+        "viable": 6,
+        "valid": 4
+      },
+      {
+        "seed": 789,
+        "best": 1.625,
+        "gens": 10,
+        "viable": 4,
+        "valid": 3
+      },
+      {
+        "seed": 1111,
+        "best": 1.247618,
+        "gens": 10,
+        "viable": 4,
+        "valid": 4
+      }
+    ],
+    "mean_best": 1.234924,
+    "pop_std_best": 0.231965,
+    "viability": "24/50",
+    "validity": "19/50",
+    "probe_scores": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "probe_valid": 0
+  },
+  "q2_k": {
+    "per_seed": [
+      {
+        "seed": 42,
+        "best": 0.89999,
+        "gens": 10,
+        "viable": 7,
+        "valid": 7
+      },
+      {
+        "seed": 123,
+        "best": 0.89999,
+        "gens": 10,
+        "viable": 4,
+        "valid": 4
+      },
+      {
+        "seed": 456,
+        "best": 0.89999,
+        "gens": 10,
+        "viable": 5,
+        "valid": 4
+      },
+      {
+        "seed": 789,
+        "best": 0.89999,
+        "gens": 10,
+        "viable": 1,
+        "valid": 1
+      },
+      {
+        "seed": 1111,
+        "best": 1.625,
+        "gens": 10,
+        "viable": 2,
+        "valid": 2
+      }
+    ],
+    "mean_best": 1.044992,
+    "pop_std_best": 0.290004,
+    "viability": "19/50",
+    "validity": "18/50",
+    "probe_scores": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "probe_valid": 0
+  }
+}

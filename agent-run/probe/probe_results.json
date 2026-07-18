@@ -1,0 +1,44 @@
+[
+  {
+    "probe": 1,
+    "score": 1.610704,
+    "viable": true,
+    "valid": true,
+    "grid_pattern": false
+  },
+  {
+    "probe": 2,
+    "score": 2.428571,
+    "viable": true,
+    "valid": true,
+    "grid_pattern": false
+  },
+  {
+    "probe": 3,
+    "score": 1.486757,
+    "viable": true,
+    "valid": true,
+    "grid_pattern": false
+  },
+  {
+    "probe": 4,
+    "score": 2.29,
+    "viable": true,
+    "valid": true,
+    "grid_pattern": false
+  },
+  {
+    "probe": 5,
+    "score": 1.95,
+    "viable": true,
+    "valid": true,
+    "grid_pattern": false
+  },
+  {
+    "probe": 6,
+    "score": 2.541421,
+    "viable": true,
+    "valid": true,
+    "grid_pattern": true
+  }
+]

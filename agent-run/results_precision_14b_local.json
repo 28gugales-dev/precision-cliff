@@ -1,0 +1,128 @@
+{
+ "source": "precision_sweep_14b_console.log (verbatim console log; jsonl lost, see README)",
+ "per_quant": {
+  "q8_0": {
+   "bpw": 8.5,
+   "viable": "22/50",
+   "viable_ci": [
+    31.2,
+    57.7
+   ],
+   "valid": "18/50",
+   "valid_ci": [
+    24.1,
+    49.9
+   ],
+   "mean_best": 1.057068,
+   "pop_std_best": 0.135524,
+   "per_seed_best": {
+    "42": 0.936,
+    "123": 1.3,
+    "456": 0.926,
+    "789": 1.083342,
+    "1111": 1.04
+   },
+   "seeds_improved_past_baseline": "5/5",
+   "valid_rows_at_exact_baseline_score": "1/18",
+   "parent_echo_rows": "4/18",
+   "probes_valid": "0/6"
+  },
+  "q4_k_m": {
+   "bpw": 4.85,
+   "viable": "22/50",
+   "viable_ci": [
+    31.2,
+    57.7
+   ],
+   "valid": "20/50",
+   "valid_ci": [
+    27.6,
+    53.8
+   ],
+   "mean_best": 1.05377,
+   "pop_std_best": 0.133678,
+   "per_seed_best": {
+    "42": 1.06,
+    "123": 1.3,
+    "456": 0.936,
+    "789": 1.04,
+    "1111": 0.93285
+   },
+   "seeds_improved_past_baseline": "5/5",
+   "valid_rows_at_exact_baseline_score": "2/20",
+   "parent_echo_rows": "4/20",
+   "probes_valid": "0/6"
+  },
+  "q3_k_m": {
+   "bpw": 3.91,
+   "viable": "24/50",
+   "viable_ci": [
+    34.8,
+    61.5
+   ],
+   "valid": "19/50",
+   "valid_ci": [
+    25.9,
+    51.8
+   ],
+   "mean_best": 1.234924,
+   "pop_std_best": 0.231965,
+   "per_seed_best": {
+    "42": 1.04,
+    "123": 1.3,
+    "456": 0.962,
+    "789": 1.625,
+    "1111": 1.247618
+   },
+   "seeds_improved_past_baseline": "5/5",
+   "valid_rows_at_exact_baseline_score": "0/19",
+   "parent_echo_rows": "4/19",
+   "probes_valid": "0/6"
+  },
+  "q2_k": {
+   "bpw": 3.35,
+   "viable": "19/50",
+   "viable_ci": [
+    25.9,
+    51.8
+   ],
+   "valid": "18/50",
+   "valid_ci": [
+    24.1,
+    49.9
+   ],
+   "mean_best": 1.044992,
+   "pop_std_best": 0.290004,
+   "per_seed_best": {
+    "42": 0.89999,
+    "123": 0.89999,
+    "456": 0.89999,
+    "789": 0.89999,
+    "1111": 1.625
+   },
+   "seeds_improved_past_baseline": "1/5",
+   "valid_rows_at_exact_baseline_score": "16/18",
+   "parent_echo_rows": "17/18",
+   "probes_valid": "0/6"
+  }
+ },
+ "tests": {
+  "improvement_cliff_seedlevel_q2k_1of5_vs_others_15of15_fisher_p": 0.00103,
+  "parent_echo_q2k_vs_others_fisher_p": "2.533e-08",
+  "parent_echo_counts": {
+   "q2_k": "17/18",
+   "others_pooled": "12/57"
+  },
+  "legacy_baseline_only_echo_counts": {
+   "q2_k": "16/18",
+   "others_pooled": "3/57"
+  },
+  "viability_14b_vs_7b_same_quants_fisher_p": "1.73e-07",
+  "viability_totals": {
+   "14b": "87/200",
+   "7b": "38/200"
+  }
+ },
+ "probes_valid_total": "0/24",
+ "best_score_anywhere": 1.625
+}

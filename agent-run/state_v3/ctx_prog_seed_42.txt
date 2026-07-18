@@ -1,0 +1,178 @@
+GENERATION: 10
+SCORE TO BEAT (sum of 26 radii, current best): 2.166667
+KNOWN OPTIMUM FOR THIS PROBLEM: not told. Higher score = better.
+
+CURRENT CHAMPION PROGRAM (produced the best score above):
+----------------------------------------
+import math
+import random
+
+def solve():
+    random.seed(42)
+    n = 26
+
+    def hexagonal_packing(n_circles, aspect_ratio=1.0):
+        """Generate initial hexagonal packing with tunable aspect ratio."""
+        positions = []
+        sqrt_n = math.sqrt(n_circles)
+
+        # Estimate grid dimensions for hexagonal packing
+        rows = int(math.ceil(sqrt_n / math.sqrt(aspect_ratio)))
+        cols = int(math.ceil(sqrt_n * math.sqrt(aspect_ratio)))
+
+        row_height = 1.0 / (rows + 0.5) if rows > 1 else 1.0
+
+        for row in range(rows):
+            # Hexagonal offset: alternate rows are offset horizontally
+            x_offset = 0.25 if row % 2 == 1 else 0.0
+            y = (row + 0.5) * row_height
+
+            for col in range(cols):
+                if len(positions) >= n_circles:
+                    break
+
+                x = (col + 0.5 + x_offset) / (cols + 0.5)
+                positions.append([x, y])
+
+            if len(positions) >= n_circles:
+                break
+
+        return positions[:n_circles]
+
+    def square_packing(n_circles):
+        """Generate initial square packing."""
+        positions = []
+        side = int(math.ceil(math.sqrt(n_circles)))
+
+        for i in range(n_circles):
+            row = i // side
+            col = i % side
+            x = (col + 0.5) / side
+            y = (row + 0.5) / side
+            positions.append([x, y])
+
+        return positions
+
+    def optimize_configuration(positions, max_iterations=800):
+        """Grow radii iteratively, tracking convergence carefully."""
+        positions = [list(p) for p in positions]  # Copy
+        radii = [0.001] * n
+
+        for iteration in range(max_iterations):
+            max_change = 0.0
+
+            for i in range(n):
+                x, y = positions[i]
+
+                # Maximum radius limited by square boundaries
+                max_r = min(x, y, 1.0 - x, 1.0 - y)
+
+                # Maximum radius limited by other circles (with small gap for numerical stability)
+                for j in range(n):
+                    if i != j:
+                        xj, yj = positions[j]
+                        rj = radii[j]
+                        dx = x - xj
+                        dy = y - yj
+                        dist = math.sqrt(dx * dx + dy * dy)
+                        max_r = min(max_r, max(dist - rj - 1e-12, 0.0))
+
+                # Only grow, never shrink
+                if max_r > radii[i]:
+                    change = max_r - radii[i]
+                    max_change = max(max_change, change)
+                    radii[i] = max_r
+
+            # Early stopping with tight convergence threshold
+            if max_change < 1e-11:
+                break
+
+        # Final validation and clamp
+        for i in range(n):
+            x, y = positions[i]
+            radii[i] = min(radii[i], x, y, 1.0 - x, 1.0 - y)
+
+        return positions, radii, sum(radii)
+
+    def perturb_positions(positions, perturbation=0.02):
+        """Lightly perturb positions for better packing."""
+        perturbed = []
+        for x, y in positions:
+            dx = random.uniform(-perturbation, perturbation)
+            dy = random.uniform(-perturbation, perturbation)
+            px = max(0.01, min(0.99, x + dx))
+            py = max(0.01, min(0.99, y + dy))
+            perturbed.append([px, py])
+        return perturbed
+
+    best_circles = None
+    best_score = -1.0
+
+    # Strategy 1: Pure hexagonal packing with different aspect ratios
+    for aspect in [0.8, 1.0, 1.2]:
+        positions = hexagonal_packing(n, aspect)
+        pos, radii, score = optimize_configuration(positions)
+
+        if score > best_score:
+            best_score = score
+            best_circles = [[pos[i][0], pos[i][1], radii[i]] for i in range(n)]
+
+    # Strategy 2: Square packing with perturbations
+    base_positions = square_packing(n)
+    for perturb_iter in range(3):
+        if perturb_iter == 0:
+            positions = base_positions
+        else:
+            positions = perturb_positions(base_positions, perturbation=0.01 + 0.005 * perturb_iter)
+
+        pos, radii, score = optimize_configuration(positions)
+
+        if score > best_score:
+            best_score = score
+            best_circles = [[pos[i][0], pos[i][1], radii[i]] for i in range(n)]
+
+    # Strategy 3: Hybrid approaches - hexagonal with different row structures
+    for offset_rows in [1, 2]:
+        positions = []
+        cols_per_row = [6, 5, 5, 6, 5, 6]  # Alternating pattern
+
+        circle_idx = 0
+        for row_idx, cols in enumerate(cols_per_row[:6]):
+            if circle_idx >= n:
+                break
+
+            y = (row_idx + 0.5) / 6.0
+            x_offset = 0.25 if row_idx % offset_rows == 1 else 0.0
+
+            for col_idx in range(cols):
+                if circle_idx >= n:
+                    break
+                x = (col_idx + 0.5 + x_offset) / (cols + 0.5)
+                positions.append([x, y])
+                circle_idx += 1
+
+        pos, radii, score = optimize_configuration(positions)
+
+        if score > best_score:
+            best_score = score
+            best_circles = [[pos[i][0], pos[i][1], radii[i]] for i in range(n)]
+
+    # Build final result with triple safety check
+    result = []
+    for i in range(n):
+        x, y, r = best_circles[i]
+
+        # Clamp radius to be safely within boundaries
+        r = min(r, x, y, 1.0 - x, 1.0 - y)
+
+        # Verify no boundary violation and add extra safety margin
+        r = max(0.0, r - 1e-10)
+
+        result.append([x, y, r])
+
+    return result
+
+circles = solve()
+print(circles)
+
+----------------------------------------

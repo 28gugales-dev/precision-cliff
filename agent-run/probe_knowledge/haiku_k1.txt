@@ -1,0 +1,14 @@
+I don't have a specific published value for this exact problem in my reliable knowledge.
+
+Circle packing research typically addresses equal-radius circles or different objectives. The problem of packing 26 circles (possibly different radii) to maximize the sum of radii in a unit square appears highly specialized.
+
+**Equal-radius case:** Databases like Erich Friedman's packing pages catalog optimal packings of n equal circles in a square, but I cannot confidently cite the precise radius value for n=26 without verification.
+
+**Unequal-radii case:** I'm unaware of a published optimum for this specific variant.
+
+If you need the best-known value, I'd recommend:
+- Checking Erich Friedman's circle packing database (friedman.eecs.umich.edu)
+- Searching recent literature on circle packing with heterogeneous radii
+- Consulting optimization research on geometric bin-packing variants
+
+Sorry I can't provide the specific number—this appears outside my confident knowledge base.

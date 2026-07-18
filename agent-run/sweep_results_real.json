@@ -1,0 +1,36 @@
+{
+  "provenance": {
+    "proposer": "Claude Haiku (claude-haiku-4-5) subagent, one agent per proposal",
+    "precision": "full (API model; this run does NOT test weight quantization)",
+    "evaluator": "deterministic Python (harness.py) - the LLM never scores itself",
+    "benchmark": "circle packing N=26, unit square, maximize sum of radii",
+    "archive": "MAP-Elites 20x20 over (mean_radius, packing_density), elitist parent selection",
+    "seeds": [42, 123, 456, 789, 1111],
+    "gens_per_seed": 10,
+    "logging": "live per-candidate append to candidates.jsonl at eval time; reconstructed=false on every row",
+    "date": "2026-07-17"
+  },
+  "per_seed": [
+    {"seed": 42,   "best": 2.5414, "qd": 3.44139,  "cov": 0.005,  "viable": 10, "valid": 9,  "gens": 10},
+    {"seed": 123,  "best": 2.5414, "qd": 5.608069, "cov": 0.0075, "viable": 10, "valid": 9,  "gens": 10},
+    {"seed": 456,  "best": 2.5414, "qd": 8.189011, "cov": 0.01,   "viable": 10, "valid": 9,  "gens": 10},
+    {"seed": 789,  "best": 2.5414, "qd": 3.441411, "cov": 0.005,  "viable": 10, "valid": 9,  "gens": 10},
+    {"seed": 1111, "best": 2.5414, "qd": 5.608069, "cov": 0.0075, "viable": 9,  "valid": 9,  "gens": 10}
+  ],
+  "aggregate": {
+    "best_fitness": {"mean": 2.5414, "std": 0.0000, "min": 2.5414, "max": 2.5414},
+    "viability": {"count": 49, "total": 50, "rate": 0.98},
+    "validity": {"count": 45, "total": 50, "rate": 0.90},
+    "coverage_cells_of_400": "2 to 4 (0.5%-1%)",
+    "peak_identity": "2.5414 = canonical 5x5 grid of r=0.1 touching circles + corner/gap filler; recited by the model, not discovered by search",
+    "seed_beating_canonical": 0
+  },
+  "notes": [
+    "All 5 seeds converge to the same canonical 2.5414 packing; final-best seed variance = 0.",
+    "Early-generation variance IS present (gen0 spread: 0/2.17/2.34/0/2.17) but washes out by gen 3.",
+    "No seed ever exceeds 2.5414 (true optimum ~2.6359): the loop cannot improve on the arrangement the model already knows.",
+    "Viability 98% here vs 32% reported for DeepSeek: the viability bottleneck is proposer-specific, not universal.",
+    "Coverage stays vacuous (<=1%): QD is not meaningfully populated on this benchmark/budget.",
+    "Caveat: viability here also counts one agent write-failure (seed 1111 gen2) as non-viable."
+  ]
+}

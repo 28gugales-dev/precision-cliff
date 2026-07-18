@@ -1,0 +1,160 @@
+import math
+import random
+import itertools
+
+def pack_circles():
+    """Pack 26 circles in unit square, maximizing sum of radii."""
+    random.seed(789)
+
+    circles = []
+
+    # Phase 1: Improved greedy placement with more candidates
+    for circle_idx in range(26):
+        best_circle = None
+        best_r = 0
+
+        candidates = []
+
+        # Dense grid-based candidates
+        for i in range(9):
+            for j in range(8):
+                x = 0.05 + i * (0.9 / 8.0)
+                y = 0.05 + j * (0.9 / 7.0)
+                if 0.01 <= x <= 0.99 and 0.01 <= y <= 0.99:
+                    candidates.append((x, y))
+
+        # Random candidates for exploration
+        for _ in range(500):
+            x = random.uniform(0.01, 0.99)
+            y = random.uniform(0.01, 0.99)
+            candidates.append((x, y))
+
+        # Evaluate each candidate position
+        for x, y in candidates:
+            r_max = compute_max_radius(x, y, circles)
+            if r_max > best_r and r_max > 1e-8:
+                best_r = r_max
+                best_circle = [x, y, r_max]
+
+        if best_circle:
+            circles.append(best_circle)
+
+    # Phase 2: Aggressive local optimization - refine positions with larger moves
+    for opt_iteration in range(25):
+        for idx in range(len(circles)):
+            x, y, r = circles[idx]
+            current_score = sum(c[2] for c in circles)
+
+            # Try larger position adjustments
+            improved = True
+            moves_tried = 0
+            while improved and moves_tried < 8:
+                improved = False
+                moves_tried += 1
+                for dx in [-0.008, -0.004, -0.002, 0.002, 0.004, 0.008]:
+                    for dy in [-0.008, -0.004, -0.002, 0.002, 0.004, 0.008]:
+                        if dx == 0 and dy == 0:
+                            continue
+                        nx = x + dx
+                        ny = y + dy
+                        if 0.001 <= nx <= 0.999 and 0.001 <= ny <= 0.999:
+                            nr = compute_max_radius(nx, ny, circles, skip_idx=idx)
+                            if nr > 1e-8:
+                                circles[idx] = [nx, ny, nr * 0.997]
+                                new_score = sum(c[2] for c in circles)
+                                if new_score > current_score + 1e-10:
+                                    current_score = new_score
+                                    x, y, r = nx, ny, nr * 0.997
+                                    improved = True
+                                    break
+                                else:
+                                    circles[idx] = [x, y, r]
+                    if improved:
+                        break
+
+    # Phase 3: Iterative radius growth
+    for growth_iteration in range(20):
+        for idx in range(len(circles)):
+            x, y = circles[idx][:2]
+            new_r = compute_max_radius(x, y, circles, skip_idx=idx)
+            if new_r > circles[idx][2]:
+                circles[idx][2] = min(new_r, circles[idx][2] * 1.01 + 0.001)
+
+    # Phase 4: Final fine-tuning with mixed moves
+    for final_iteration in range(30):
+        for idx in range(len(circles)):
+            x, y, r = circles[idx]
+            best_score = sum(c[2] for c in circles)
+            best_x, best_y, best_r = x, y, r
+
+            # Try micro-adjustments
+            for dx in [-0.003, -0.001, 0.001, 0.003]:
+                for dy in [-0.003, -0.001, 0.001, 0.003]:
+                    nx = x + dx
+                    ny = y + dy
+                    if 0.001 <= nx <= 0.999 and 0.001 <= ny <= 0.999:
+                        nr = compute_max_radius(nx, ny, circles, skip_idx=idx)
+                        circles[idx] = [nx, ny, nr * 0.998]
+                        new_score = sum(c[2] for c in circles)
+                        if new_score > best_score:
+                            best_score = new_score
+                            best_x, best_y, best_r = nx, ny, nr * 0.998
+                        else:
+                            circles[idx] = [x, y, r]
+
+            if best_x != x or best_y != y:
+                circles[idx] = [best_x, best_y, best_r]
+
+    # Phase 5: Final radius optimization
+    for idx in range(len(circles)):
+        x, y = circles[idx][:2]
+        circles[idx][2] = compute_max_radius(x, y, circles, skip_idx=idx) * 0.996
+
+    return circles
+
+def compute_max_radius(x, y, circles, skip_idx=-1):
+    """Compute the maximum radius for a circle at (x, y) without overlaps."""
+    # Constraint from box boundaries
+    r_max = min(x, y, 1.0 - x, 1.0 - y)
+
+    # Constraint from existing circles
+    for i, (cx, cy, cr) in enumerate(circles):
+        if i == skip_idx:
+            continue
+        dist = math.sqrt((x - cx) ** 2 + (y - cy) ** 2)
+        # New circle can have radius at most dist - cr (to avoid overlap)
+        r_max = min(r_max, dist - cr)
+
+    return max(0.0, r_max)
+
+def validate_geometry(circles):
+    """Validate that the packing is geometrically valid."""
+    if len(circles) != 26:
+        return False
+
+    # Check boundary constraints
+    for x, y, r in circles:
+        if r < 0 or x - r < -1e-9 or x + r > 1.0 + 1e-9:
+            return False
+        if y - r < -1e-9 or y + r > 1.0 + 1e-9:
+            return False
+
+    # Check non-overlap constraints
+    for i, (x1, y1, r1) in enumerate(circles):
+        for x2, y2, r2 in circles[i + 1:]:
+            dist = math.sqrt((x1 - x2) ** 2 + (y1 - y2) ** 2)
+            if dist < r1 + r2 - 1e-9:
+                return False
+
+    return True
+
+# Generate and validate the packing
+result = pack_circles()
+
+# Ensure validity before outputting
+if not validate_geometry(result):
+    # Fallback: shrink all radii by 10% to ensure validity
+    for circle in result:
+        circle[2] *= 0.90
+
+print(result)

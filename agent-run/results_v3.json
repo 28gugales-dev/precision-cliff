@@ -1,0 +1,62 @@
+{
+  "prog_haiku": [
+    {
+      "seed": 42,
+      "best": 2.166667,
+      "qd": 8.879658,
+      "cov": 0.015,
+      "viable": 7,
+      "valid": 6,
+      "errors": {
+        "crash": 3
+      },
+      "gens": 10
+    },
+    {
+      "seed": 123,
+      "best": 2.478739,
+      "qd": 5.82045,
+      "cov": 0.0075,
+      "viable": 4,
+      "valid": 4,
+      "errors": {
+        "timeout": 5
+      },
+      "gens": 10
+    },
+    {
+      "seed": 456,
+      "best": 2.53714,
+      "qd": 10.944217,
+      "cov": 0.0125,
+      "viable": 6,
+      "valid": 6,
+      "errors": {
+        "timeout": 4
+      },
+      "gens": 10
+    },
+    {
+      "seed": 789,
+      "best": 1.658621,
+      "qd": 7.297161,
+      "cov": 0.0125,
+      "viable": 6,
+      "valid": 6,
+      "errors": {
+        "timeout": 1
+      },
+      "gens": 10
+    },
+    {
+      "seed": 1111,
+      "best": 2.388605,
+      "qd": 7.983032,
+      "cov": 0.01,
+      "viable": 10,
+      "valid": 9,
+      "errors": {},
+      "gens": 10
+    }
+  ]
+}

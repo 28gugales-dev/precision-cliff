@@ -1,0 +1,200 @@
+{
+ "integrity": "OK",
+ "per_quant": {
+  "fp16": {
+   "bpw": 16.0,
+   "viable": "7/50",
+   "viable_ci": [
+    7.0,
+    26.2
+   ],
+   "valid": "7/50",
+   "valid_ci": [
+    7.0,
+    26.2
+   ],
+   "mean_best": 0.984547,
+   "pop_std_best": 0.496163,
+   "per_seed_best": {
+    "42": 0.0,
+    "123": 1.3,
+    "456": 1.15999,
+    "789": 1.3,
+    "1111": 1.162746
+   },
+   "max_best": 1.3,
+   "valid_at_exact_baseline": "0/7",
+   "probes_valid": "0/6",
+   "count_drift": {
+    "25": 24,
+    "24": 16,
+    "26": 7,
+    "27": 3
+   }
+  },
+  "q8_0": {
+   "bpw": 8.5,
+   "viable": "6/50",
+   "viable_ci": [
+    5.6,
+    23.8
+   ],
+   "valid": "4/50",
+   "valid_ci": [
+    3.2,
+    18.8
+   ],
+   "mean_best": 0.753745,
+   "pop_std_best": 0.414467,
+   "per_seed_best": {
+    "42": 1.05599,
+    "123": 0.89999,
+    "456": 0.0,
+    "789": 0.65,
+    "1111": 1.162746
+   },
+   "max_best": 1.162746,
+   "valid_at_exact_baseline": "1/4",
+   "probes_valid": "0/6",
+   "count_drift": {
+    "25": 20,
+    "24": 16,
+    "26": 6,
+    "27": 4,
+    "30": 4
+   }
+  },
+  "q4_k_m": {
+   "bpw": 4.85,
+   "viable": "9/50",
+   "viable_ci": [
+    9.8,
+    30.8
+   ],
+   "valid": "7/50",
+   "valid_ci": [
+    7.0,
+    26.2
+   ],
+   "mean_best": 0.595998,
+   "pop_std_best": 0.553156,
+   "per_seed_best": {
+    "42": 1.3,
+    "123": 1.15999,
+    "456": 0.0,
+    "789": 0.52,
+    "1111": 0.0
+   },
+   "max_best": 1.3,
+   "valid_at_exact_baseline": "0/7",
+   "probes_valid": "0/6",
+   "count_drift": {
+    "24": 14,
+    "25": 14,
+    "26": 9,
+    "27": 6,
+    "28": 2,
+    "23": 2,
+    "30": 2,
+    "45": 1
+   }
+  },
+  "q3_k_m": {
+   "bpw": 3.91,
+   "viable": "7/50",
+   "viable_ci": [
+    7.0,
+    26.2
+   ],
+   "valid": "6/50",
+   "valid_ci": [
+    5.6,
+    23.8
+   ],
+   "mean_best": 0.981994,
+   "pop_std_best": 0.591007,
+   "per_seed_best": {
+    "42": 0.89999,
+    "123": 1.3,
+    "456": 0.91,
+    "789": 0.0,
+    "1111": 1.79998
+   },
+   "max_best": 1.79998,
+   "valid_at_exact_baseline": "2/6",
+   "probes_valid": "0/6",
+   "count_drift": {
+    "25": 22,
+    "24": 16,
+    "26": 7,
+    "27": 2,
+    "30": 1,
+    "28": 1,
+    "45": 1
+   }
+  },
+  "q2_k": {
+   "bpw": 3.35,
+   "viable": "16/50",
+   "viable_ci": [
+    20.8,
+    45.8
+   ],
+   "valid": "12/50",
+   "valid_ci": [
+    14.3,
+    37.4
+   ],
+   "mean_best": 1.256668,
+   "pop_std_best": 0.185878,
+   "per_seed_best": {
+    "42": 1.3,
+    "123": 1.04,
+    "456": 1.3,
+    "789": 1.083342,
+    "1111": 1.56
+   },
+   "max_best": 1.56,
+   "valid_at_exact_baseline": "1/12",
+   "probes_valid": "0/6",
+   "count_drift": {
+    "26": 16,
+    "25": 9,
+    "30": 8,
+    "27": 6,
+    "24": 2,
+    "34": 2,
+    "29": 2,
+    "31": 2
+   }
+  }
+ },
+ "fisher_two_sided_p": {
+  "q2k_vs_fp16_viability": 0.05586,
+  "q2k_vs_pooled_others_viability": 0.00682,
+  "fp16_vs_q3km_viability": 1.0
+ },
+ "global": {
+  "total_loop_rows": 250,
+  "total_probes": 30,
+  "probes_valid_total": 0,
+  "best_score_anywhere": 1.79998,
+  "recall_ceiling": 2.5414213562,
+  "n_scores_at_canonical": 0,
+  "n_valid_at_exact_baseline_recipe": 4,
+  "count_drift_all": {
+   "25": 89,
+   "24": 64,
+   "26": 45,
+   "27": 21,
+   "30": 15,
+   "28": 4,
+   "23": 2,
+   "45": 2,
+   "34": 2,
+   "29": 2,
+   "31": 2,
+   "32": 1
+  }
+ }
+}

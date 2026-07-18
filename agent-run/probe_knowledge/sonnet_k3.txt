@@ -1,0 +1,3 @@
+Honestly: no specific published value for n=26 known to me.
+
+This exact objective (maximize sum of radii, differing sizes allowed, n fixed) is studied less than classic "equal circles, maximize min radius" packing (Erich Friedman's packomania-style tables). Ovidiu Bagdasar and collaborators have papers on "sum of radii" packing in unit square/circle for small n, with some optimal/conjectured configurations (often nested or corner-clustered patterns, largest circle near center-ish, others in corners/edges), but I don't recall n=26 being tabulated with a citable numeric value or verified-optimal layout. Packomania-type sites mostly track different objectives. I can't state a trustworthy number/source for n=26 — would be guessing if I gave one.

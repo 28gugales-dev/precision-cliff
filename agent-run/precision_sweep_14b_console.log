@@ -1,0 +1,269 @@
+[selftest] evaluator + parser OK
+[gpus] ['Tesla T4, 15360 MiB', 'Tesla T4, 15360 MiB']
+
+===== condition: q8_0 =====
+[download] qwen2.5-coder-14b-instruct-q8_0.gguf ...
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+qwen2.5-coder-14b-instruct-q8_0.gguf: 100%|█| 15.7G/15.7G [01:13<00:00, 213MB/s]
+[download] done in 74s -> /kaggle/tmp/models/qwen2.5-coder-14b-instruct-q8_0.gguf
+[hash] q8_0 ...
+[hash] 8180f66e3458e298... (15.70 GB)
+[load] qwen2.5-coder-14b-instruct-q8_0.gguf (gpus=2)
+[load] ready in 7s
+[q8_0] seed 42 gen 0: score=0.910000 viable=True valid=True best=0.910000 (36s)
+[q8_0] seed 123 gen 0: score=0.000000 viable=False valid=False best=0.899990 (26s)
+[q8_0] seed 456 gen 0: score=0.000000 viable=False valid=False best=0.899990 (29s)
+[q8_0] seed 789 gen 0: score=0.000000 viable=False valid=False best=0.899990 (29s)
+[q8_0] seed 1111 gen 0: score=0.000000 viable=False valid=False best=0.899990 (50s)
+[q8_0] seed 42 gen 1: score=0.000000 viable=False valid=False best=0.910000 (24s)
+[q8_0] seed 123 gen 1: score=0.000000 viable=False valid=False best=0.899990 (27s)
+[q8_0] seed 456 gen 1: score=0.899990 viable=True valid=True best=0.899990 (47s)
+[q8_0] seed 789 gen 1: score=1.083342 viable=True valid=True best=1.083342 (44s)
+[q8_0] seed 1111 gen 1: score=0.910000 viable=True valid=True best=0.910000 (42s)
+[q8_0] seed 42 gen 2: score=0.936000 viable=True valid=True best=0.936000 (36s)
+[q8_0] seed 123 gen 2: score=0.000000 viable=False valid=False best=0.899990 (29s)
+[q8_0] seed 456 gen 2: score=0.000000 viable=False valid=False best=0.899990 (32s)
+[q8_0] seed 789 gen 2: score=1.083342 viable=True valid=True best=1.083342 (46s)
+[q8_0] seed 1111 gen 2: score=0.936000 viable=True valid=True best=0.936000 (34s)
+[q8_0] seed 42 gen 3: score=0.000000 viable=False valid=False best=0.936000 (33s)
+[q8_0] seed 123 gen 3: score=0.000000 viable=False valid=False best=0.899990 (40s)
+[q8_0] seed 456 gen 3: score=0.000000 viable=False valid=False best=0.899990 (26s)
+[q8_0] seed 789 gen 3: score=0.000000 viable=False valid=False best=1.083342 (29s)
+[q8_0] seed 1111 gen 3: score=0.000000 viable=False valid=False best=0.936000 (29s)
+[q8_0] seed 42 gen 4: score=0.000000 viable=False valid=False best=0.936000 (26s)
+[q8_0] seed 123 gen 4: score=1.040000 viable=True valid=True best=1.040000 (32s)
+[q8_0] seed 456 gen 4: score=0.910000 viable=True valid=True best=0.910000 (35s)
+[q8_0] seed 789 gen 4: score=0.000000 viable=False valid=False best=1.083342 (47s)
+[q8_0] seed 1111 gen 4: score=0.000000 viable=False valid=False best=0.936000 (32s)
+[q8_0] seed 42 gen 5: score=0.000000 viable=False valid=False best=0.936000 (31s)
+[q8_0] seed 123 gen 5: score=0.000000 viable=True valid=False best=1.040000 (32s)
+[q8_0] seed 456 gen 5: score=0.915000 viable=True valid=True best=0.915000 (36s)
+[q8_0] seed 789 gen 5: score=0.000000 viable=False valid=False best=1.083342 (26s)
+[q8_0] seed 1111 gen 5: score=0.000000 viable=False valid=False best=0.936000 (30s)
+[q8_0] seed 42 gen 6: score=0.000000 viable=False valid=False best=0.936000 (26s)
+[q8_0] seed 123 gen 6: score=1.300000 viable=True valid=True best=1.300000 (32s)
+[q8_0] seed 456 gen 6: score=0.921000 viable=True valid=True best=0.921000 (36s)
+[q8_0] seed 789 gen 6: score=0.000000 viable=False valid=False best=1.083342 (29s)
+[q8_0] seed 1111 gen 6: score=0.000000 viable=True valid=False best=0.936000 (33s)
+[q8_0] seed 42 gen 7: score=0.000000 viable=False valid=False best=0.936000 (27s)
+[q8_0] seed 123 gen 7: score=0.000000 viable=False valid=False best=1.300000 (33s)
+[q8_0] seed 456 gen 7: score=0.924000 viable=True valid=True best=0.924000 (36s)
+[q8_0] seed 789 gen 7: score=0.000000 viable=False valid=False best=1.083342 (32s)
+[q8_0] seed 1111 gen 7: score=0.962000 viable=True valid=True best=0.962000 (33s)
+[q8_0] seed 42 gen 8: score=0.000000 viable=True valid=False best=0.936000 (28s)
+[q8_0] seed 123 gen 8: score=0.000000 viable=True valid=False best=1.300000 (31s)
+[q8_0] seed 456 gen 8: score=0.000000 viable=False valid=False best=0.924000 (26s)
+[q8_0] seed 789 gen 8: score=1.083342 viable=True valid=True best=1.083342 (39s)
+[q8_0] seed 1111 gen 8: score=0.962000 viable=True valid=True best=0.962000 (33s)
+[q8_0] seed 42 gen 9: score=0.000000 viable=False valid=False best=0.936000 (26s)
+[q8_0] seed 123 gen 9: score=0.000000 viable=False valid=False best=1.300000 (33s)
+[q8_0] seed 456 gen 9: score=0.926000 viable=True valid=True best=0.926000 (36s)
+[q8_0] seed 789 gen 9: score=0.000000 viable=False valid=False best=1.083342 (29s)
+[q8_0] seed 1111 gen 9: score=1.040000 viable=True valid=True best=1.040000 (31s)
+[q8_0] probe 0: score=0.000000 valid=False
+[q8_0] probe 1: score=0.000000 valid=False
+[q8_0] probe 2: score=0.000000 valid=False
+[q8_0] probe 3: score=0.000000 valid=False
+[q8_0] probe 4: score=0.000000 valid=False
+[q8_0] probe 5: score=0.000000 valid=False
+[cleanup] removed qwen2.5-coder-14b-instruct-q8_0.gguf
+
+===== condition: q4_k_m =====
+[download] qwen2.5-coder-14b-instruct-q4_k_m.gguf ...
+qwen2.5-coder-14b-instruct-q4_k_m.gguf: 100%|█| 8.99G/8.99G [00:22<00:00, 408MB/
+[download] done in 22s -> /kaggle/tmp/models/qwen2.5-coder-14b-instruct-q4_k_m.gguf
+[hash] q4_k_m ...
+[hash] c1e659736d89ac10... (8.99 GB)
+[load] qwen2.5-coder-14b-instruct-q4_k_m.gguf (gpus=2)
+[load] ready in 4s
+[q4_k_m] seed 42 gen 0: score=0.910000 viable=True valid=True best=0.910000 (25s)
+[q4_k_m] seed 123 gen 0: score=0.000000 viable=False valid=False best=0.899990 (18s)
+[q4_k_m] seed 456 gen 0: score=0.000000 viable=False valid=False best=0.899990 (19s)
+[q4_k_m] seed 789 gen 0: score=0.000000 viable=False valid=False best=0.899990 (20s)
+[q4_k_m] seed 1111 gen 0: score=0.928564 viable=True valid=True best=0.928564 (33s)
+[q4_k_m] seed 42 gen 1: score=0.000000 viable=False valid=False best=0.910000 (16s)
+[q4_k_m] seed 123 gen 1: score=0.000000 viable=False valid=False best=0.899990 (19s)
+[q4_k_m] seed 456 gen 1: score=0.000000 viable=False valid=False best=0.899990 (17s)
+[q4_k_m] seed 789 gen 1: score=0.000000 viable=False valid=False best=0.899990 (17s)
+[q4_k_m] seed 1111 gen 1: score=0.000000 viable=False valid=False best=0.928564 (32s)
+[q4_k_m] seed 42 gen 2: score=0.936000 viable=True valid=True best=0.936000 (25s)
+[q4_k_m] seed 123 gen 2: score=0.910000 viable=True valid=True best=0.910000 (25s)
+[q4_k_m] seed 456 gen 2: score=0.000000 viable=False valid=False best=0.899990 (18s)
+[q4_k_m] seed 789 gen 2: score=0.902200 viable=True valid=True best=0.902200 (25s)
+[q4_k_m] seed 1111 gen 2: score=0.000000 viable=False valid=False best=0.928564 (20s)
+[q4_k_m] seed 42 gen 3: score=0.000000 viable=False valid=False best=0.936000 (21s)
+[q4_k_m] seed 123 gen 3: score=1.040000 viable=True valid=True best=1.040000 (22s)
+[q4_k_m] seed 456 gen 3: score=0.000000 viable=False valid=False best=0.899990 (18s)
+[q4_k_m] seed 789 gen 3: score=0.000000 viable=True valid=False best=0.902200 (20s)
+[q4_k_m] seed 1111 gen 3: score=0.000000 viable=False valid=False best=0.928564 (19s)
+[q4_k_m] seed 42 gen 4: score=0.000000 viable=False valid=False best=0.936000 (18s)
+[q4_k_m] seed 123 gen 4: score=0.000000 viable=False valid=False best=1.040000 (21s)
+[q4_k_m] seed 456 gen 4: score=0.899990 viable=True valid=True best=0.899990 (29s)
+[q4_k_m] seed 789 gen 4: score=0.910000 viable=True valid=True best=0.910000 (25s)
+[q4_k_m] seed 1111 gen 4: score=0.000000 viable=False valid=False best=0.928564 (29s)
+[q4_k_m] seed 42 gen 5: score=0.962000 viable=True valid=True best=0.962000 (25s)
+[q4_k_m] seed 123 gen 5: score=0.000000 viable=False valid=False best=1.040000 (20s)
+[q4_k_m] seed 456 gen 5: score=0.000000 viable=False valid=False best=0.899990 (19s)
+[q4_k_m] seed 789 gen 5: score=0.000000 viable=False valid=False best=0.910000 (18s)
+[q4_k_m] seed 1111 gen 5: score=0.000000 viable=False valid=False best=0.928564 (21s)
+[q4_k_m] seed 42 gen 6: score=1.040000 viable=True valid=True best=1.040000 (24s)
+[q4_k_m] seed 123 gen 6: score=1.300000 viable=True valid=True best=1.300000 (21s)
+[q4_k_m] seed 456 gen 6: score=0.899990 viable=True valid=True best=0.899990 (29s)
+[q4_k_m] seed 789 gen 6: score=1.040000 viable=True valid=True best=1.040000 (24s)
+[q4_k_m] seed 1111 gen 6: score=0.932850 viable=True valid=True best=0.932850 (34s)
+[q4_k_m] seed 42 gen 7: score=1.050000 viable=True valid=True best=1.050000 (24s)
+[q4_k_m] seed 123 gen 7: score=0.000000 viable=False valid=False best=1.300000 (20s)
+[q4_k_m] seed 456 gen 7: score=0.910000 viable=True valid=True best=0.910000 (25s)
+[q4_k_m] seed 789 gen 7: score=1.040000 viable=True valid=True best=1.040000 (24s)
+[q4_k_m] seed 1111 gen 7: score=0.000000 viable=True valid=False best=0.932850 (21s)
+[q4_k_m] seed 42 gen 8: score=1.050000 viable=True valid=True best=1.050000 (24s)
+[q4_k_m] seed 123 gen 8: score=0.000000 viable=False valid=False best=1.300000 (20s)
+[q4_k_m] seed 456 gen 8: score=0.000000 viable=False valid=False best=0.910000 (19s)
+[q4_k_m] seed 789 gen 8: score=0.000000 viable=False valid=False best=1.040000 (20s)
+[q4_k_m] seed 1111 gen 8: score=0.000000 viable=False valid=False best=0.932850 (33s)
+[q4_k_m] seed 42 gen 9: score=1.060000 viable=True valid=True best=1.060000 (24s)
+[q4_k_m] seed 123 gen 9: score=0.000000 viable=False valid=False best=1.300000 (20s)
+[q4_k_m] seed 456 gen 9: score=0.936000 viable=True valid=True best=0.936000 (25s)
+[q4_k_m] seed 789 gen 9: score=0.000000 viable=False valid=False best=1.040000 (19s)
+[q4_k_m] seed 1111 gen 9: score=0.000000 viable=False valid=False best=0.932850 (22s)
+[q4_k_m] probe 0: score=0.000000 valid=False
+[q4_k_m] probe 1: score=0.000000 valid=False
+[q4_k_m] probe 2: score=0.000000 valid=False
+[q4_k_m] probe 3: score=0.000000 valid=False
+[q4_k_m] probe 4: score=0.000000 valid=False
+[q4_k_m] probe 5: score=0.000000 valid=False
+[cleanup] removed qwen2.5-coder-14b-instruct-q4_k_m.gguf
+
+===== condition: q3_k_m =====
+[download] qwen2.5-coder-14b-instruct-q3_k_m.gguf ...
+qwen2.5-coder-14b-instruct-q3_k_m.gguf: 100%|█| 7.34G/7.34G [00:22<00:00, 333MB/
+[download] done in 22s -> /kaggle/tmp/models/qwen2.5-coder-14b-instruct-q3_k_m.gguf
+[hash] q3_k_m ...
+[hash] 93b69ebf2883dcd4... (7.34 GB)
+[load] qwen2.5-coder-14b-instruct-q3_k_m.gguf (gpus=2)
+[load] ready in 3s
+[q3_k_m] seed 42 gen 0: score=0.910000 viable=True valid=True best=0.910000 (27s)
+[q3_k_m] seed 123 gen 0: score=0.000000 viable=False valid=False best=0.899990 (19s)
+[q3_k_m] seed 456 gen 0: score=0.000000 viable=False valid=False best=0.899990 (19s)
+[q3_k_m] seed 789 gen 0: score=0.902590 viable=True valid=True best=0.902590 (30s)
+[q3_k_m] seed 1111 gen 0: score=1.238094 viable=True valid=True best=1.238094 (36s)
+[q3_k_m] seed 42 gen 1: score=0.000000 viable=False valid=False best=0.910000 (19s)
+[q3_k_m] seed 123 gen 1: score=0.910000 viable=True valid=True best=0.910000 (27s)
+[q3_k_m] seed 456 gen 1: score=0.000000 viable=False valid=False best=0.899990 (40s)
+[q3_k_m] seed 789 gen 1: score=1.625000 viable=True valid=True best=1.625000 (32s)
+[q3_k_m] seed 1111 gen 1: score=0.000000 viable=False valid=False best=1.238094 (24s)
+[q3_k_m] seed 42 gen 2: score=0.000000 viable=False valid=False best=0.910000 (22s)
+[q3_k_m] seed 123 gen 2: score=0.000000 viable=False valid=False best=0.910000 (20s)
+[q3_k_m] seed 456 gen 2: score=0.000000 viable=False valid=False best=0.899990 (25s)
+[q3_k_m] seed 789 gen 2: score=0.000000 viable=False valid=False best=1.625000 (33s)
+[q3_k_m] seed 1111 gen 2: score=0.000000 viable=False valid=False best=1.238094 (27s)
+[q3_k_m] seed 42 gen 3: score=0.936000 viable=True valid=True best=0.936000 (28s)
+[q3_k_m] seed 123 gen 3: score=1.040000 viable=True valid=True best=1.040000 (23s)
+[q3_k_m] seed 456 gen 3: score=0.902850 viable=True valid=True best=0.902850 (32s)
+[q3_k_m] seed 789 gen 3: score=0.000000 viable=False valid=False best=1.625000 (33s)
+[q3_k_m] seed 1111 gen 3: score=1.238094 viable=True valid=True best=1.238094 (38s)
+[q3_k_m] seed 42 gen 4: score=0.000000 viable=False valid=False best=0.936000 (20s)
+[q3_k_m] seed 123 gen 4: score=0.000000 viable=False valid=False best=1.040000 (22s)
+[q3_k_m] seed 456 gen 4: score=0.910000 viable=True valid=True best=0.910000 (28s)
+[q3_k_m] seed 789 gen 4: score=0.000000 viable=False valid=False best=1.625000 (33s)
+[q3_k_m] seed 1111 gen 4: score=0.000000 viable=False valid=False best=1.238094 (35s)
+[q3_k_m] seed 42 gen 5: score=0.962000 viable=True valid=True best=0.962000 (28s)
+[q3_k_m] seed 123 gen 5: score=0.000000 viable=True valid=False best=1.040000 (23s)
+[q3_k_m] seed 456 gen 5: score=0.000000 viable=True valid=False best=0.910000 (23s)
+[q3_k_m] seed 789 gen 5: score=0.000000 viable=False valid=False best=1.625000 (29s)
+[q3_k_m] seed 1111 gen 5: score=0.000000 viable=False valid=False best=1.238094 (22s)
+[q3_k_m] seed 42 gen 6: score=1.040000 viable=True valid=True best=1.040000 (26s)
+[q3_k_m] seed 123 gen 6: score=0.000000 viable=True valid=False best=1.040000 (24s)
+[q3_k_m] seed 456 gen 6: score=0.936000 viable=True valid=True best=0.936000 (28s)
+[q3_k_m] seed 789 gen 6: score=0.000000 viable=True valid=False best=1.625000 (31s)
+[q3_k_m] seed 1111 gen 6: score=0.000000 viable=False valid=False best=1.238094 (36s)
+[q3_k_m] seed 42 gen 7: score=0.000000 viable=False valid=False best=1.040000 (22s)
+[q3_k_m] seed 123 gen 7: score=0.000000 viable=False valid=False best=1.040000 (25s)
+[q3_k_m] seed 456 gen 7: score=0.962000 viable=True valid=True best=0.962000 (28s)
+[q3_k_m] seed 789 gen 7: score=0.000000 viable=False valid=False best=1.625000 (33s)
+[q3_k_m] seed 1111 gen 7: score=1.247618 viable=True valid=True best=1.247618 (38s)
+[q3_k_m] seed 42 gen 8: score=0.000000 viable=False valid=False best=1.040000 (21s)
+[q3_k_m] seed 123 gen 8: score=1.300000 viable=True valid=True best=1.300000 (24s)
+[q3_k_m] seed 456 gen 8: score=0.000000 viable=False valid=False best=0.962000 (20s)
+[q3_k_m] seed 789 gen 8: score=1.625000 viable=True valid=True best=1.625000 (33s)
+[q3_k_m] seed 1111 gen 8: score=1.247618 viable=True valid=True best=1.247618 (38s)
+[q3_k_m] seed 42 gen 9: score=0.000000 viable=False valid=False best=1.040000 (20s)
+[q3_k_m] seed 123 gen 9: score=1.300000 viable=True valid=True best=1.300000 (24s)
+[q3_k_m] seed 456 gen 9: score=0.000000 viable=True valid=False best=0.962000 (22s)
+[q3_k_m] seed 789 gen 9: score=0.000000 viable=False valid=False best=1.625000 (34s)
+[q3_k_m] seed 1111 gen 9: score=0.000000 viable=False valid=False best=1.247618 (23s)
+[q3_k_m] probe 0: score=0.000000 valid=False
+[q3_k_m] probe 1: score=0.000000 valid=False
+[q3_k_m] probe 2: score=0.000000 valid=False
+[q3_k_m] probe 3: score=0.000000 valid=False
+[q3_k_m] probe 4: score=0.000000 valid=False
+[q3_k_m] probe 5: score=0.000000 valid=False
+[cleanup] removed qwen2.5-coder-14b-instruct-q3_k_m.gguf
+
+===== condition: q2_k =====
+[download] qwen2.5-coder-14b-instruct-q2_k.gguf ...
+qwen2.5-coder-14b-instruct-q2_k.gguf: 100%|█| 5.77G/5.77G [00:24<00:00, 236MB/s]
+[download] done in 25s -> /kaggle/tmp/models/qwen2.5-coder-14b-instruct-q2_k.gguf
+[hash] q2_k ...
+[hash] 4542a8bb0c0ae6fb... (5.77 GB)
+[load] qwen2.5-coder-14b-instruct-q2_k.gguf (gpus=2)
+[load] ready in 2s
+[q2_k] seed 42 gen 0: score=0.899990 viable=True valid=True best=0.899990 (28s)
+[q2_k] seed 123 gen 0: score=0.000000 viable=False valid=False best=0.899990 (15s)
+[q2_k] seed 456 gen 0: score=0.000000 viable=False valid=False best=0.899990 (20s)
+[q2_k] seed 789 gen 0: score=0.000000 viable=False valid=False best=0.899990 (29s)
+[q2_k] seed 1111 gen 0: score=0.000000 viable=False valid=False best=0.899990 (32s)
+[q2_k] seed 42 gen 1: score=0.000000 viable=False valid=False best=0.899990 (27s)
+[q2_k] seed 123 gen 1: score=0.000000 viable=False valid=False best=0.899990 (29s)
+[q2_k] seed 456 gen 1: score=0.000000 viable=True valid=False best=0.899990 (35s)
+[q2_k] seed 789 gen 1: score=0.000000 viable=False valid=False best=0.899990 (17s)
+[q2_k] seed 1111 gen 1: score=1.625000 viable=True valid=True best=1.625000 (28s)
+[q2_k] seed 42 gen 2: score=0.899990 viable=True valid=True best=0.899990 (28s)
+[q2_k] seed 123 gen 2: score=0.899990 viable=True valid=True best=0.899990 (28s)
+[q2_k] seed 456 gen 2: score=0.899990 viable=True valid=True best=0.899990 (28s)
+[q2_k] seed 789 gen 2: score=0.000000 viable=False valid=False best=0.899990 (29s)
+[q2_k] seed 1111 gen 2: score=0.000000 viable=False valid=False best=1.625000 (31s)
+[q2_k] seed 42 gen 3: score=0.899990 viable=True valid=True best=0.899990 (30s)
+[q2_k] seed 123 gen 3: score=0.000000 viable=False valid=False best=0.899990 (25s)
+[q2_k] seed 456 gen 3: score=0.000000 viable=False valid=False best=0.899990 (27s)
+[q2_k] seed 789 gen 3: score=0.000000 viable=False valid=False best=0.899990 (20s)
+[q2_k] seed 1111 gen 3: score=1.625000 viable=True valid=True best=1.625000 (30s)
+[q2_k] seed 42 gen 4: score=0.899990 viable=True valid=True best=0.899990 (30s)
+[q2_k] seed 123 gen 4: score=0.000000 viable=False valid=False best=0.899990 (29s)
+[q2_k] seed 456 gen 4: score=0.899990 viable=True valid=True best=0.899990 (28s)
+[q2_k] seed 789 gen 4: score=0.000000 viable=False valid=False best=0.899990 (29s)
+[q2_k] seed 1111 gen 4: score=0.000000 viable=False valid=False best=1.625000 (21s)
+[q2_k] seed 42 gen 5: score=0.899990 viable=True valid=True best=0.899990 (30s)
+[q2_k] seed 123 gen 5: score=0.000000 viable=False valid=False best=0.899990 (36s)
+[q2_k] seed 456 gen 5: score=0.000000 viable=False valid=False best=0.899990 (18s)
+[q2_k] seed 789 gen 5: score=0.000000 viable=False valid=False best=0.899990 (18s)
+[q2_k] seed 1111 gen 5: score=0.000000 viable=False valid=False best=1.625000 (31s)
+[q2_k] seed 42 gen 6: score=0.899990 viable=True valid=True best=0.899990 (30s)
+[q2_k] seed 123 gen 6: score=0.899990 viable=True valid=True best=0.899990 (28s)
+[q2_k] seed 456 gen 6: score=0.899990 viable=True valid=True best=0.899990 (28s)
+[q2_k] seed 789 gen 6: score=0.899990 viable=True valid=True best=0.899990 (28s)
+[q2_k] seed 1111 gen 6: score=0.000000 viable=False valid=False best=1.625000 (32s)
+[q2_k] seed 42 gen 7: score=0.000000 viable=False valid=False best=0.899990 (35s)
+[q2_k] seed 123 gen 7: score=0.899990 viable=True valid=True best=0.899990 (28s)
+[q2_k] seed 456 gen 7: score=0.899990 viable=True valid=True best=0.899990 (28s)
+[q2_k] seed 789 gen 7: score=0.000000 viable=False valid=False best=0.899990 (29s)
+[q2_k] seed 1111 gen 7: score=0.000000 viable=False valid=False best=1.625000 (31s)
+[q2_k] seed 42 gen 8: score=0.000000 viable=False valid=False best=0.899990 (30s)
+[q2_k] seed 123 gen 8: score=0.000000 viable=False valid=False best=0.899990 (29s)
+[q2_k] seed 456 gen 8: score=0.000000 viable=False valid=False best=0.899990 (19s)
+[q2_k] seed 789 gen 8: score=0.000000 viable=False valid=False best=0.899990 (27s)
+[q2_k] seed 1111 gen 8: score=0.000000 viable=False valid=False best=1.625000 (31s)
+[q2_k] seed 42 gen 9: score=0.899990 viable=True valid=True best=0.899990 (30s)
+[q2_k] seed 123 gen 9: score=0.899990 viable=True valid=True best=0.899990 (28s)
+[q2_k] seed 456 gen 9: score=0.000000 viable=False valid=False best=0.899990 (29s)
+[q2_k] seed 789 gen 9: score=0.000000 viable=False valid=False best=0.899990 (29s)
+[q2_k] seed 1111 gen 9: score=0.000000 viable=False valid=False best=1.625000 (31s)
+[q2_k] probe 0: score=0.000000 valid=False
+[q2_k] probe 1: score=0.000000 valid=False
+[q2_k] probe 2: score=0.000000 valid=False
+[q2_k] probe 3: score=0.000000 valid=False
+[q2_k] probe 4: score=0.000000 valid=False
+[q2_k] probe 5: score=0.000000 valid=False
+[cleanup] removed qwen2.5-coder-14b-instruct-q2_k.gguf
+
+[done] all conditions processed. Download /kaggle/working/precision_sweep_14b/

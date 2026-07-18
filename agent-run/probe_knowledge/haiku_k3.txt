@@ -1,0 +1,5 @@
+I don't have a specific published result for this exact problem formulation.
+
+Circle packing research typically focuses on: (1) packing N equal circles to maximize their radius, or (2) packing maximum circles of fixed radius. The variant of packing exactly 26 variable-radius circles into a unit square to maximize the sum of radii appears specialized and I'm unaware of a well-known benchmark value.
+
+This objective—summing radii rather than maximizing individual radius or packing count—is less standard in the literature. If such a result exists, it would likely be found in specialized optimization journals or competition problem archives (e.g., Packing Center databases), but I cannot cite one confidently.

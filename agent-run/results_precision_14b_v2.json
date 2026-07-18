@@ -1,0 +1,147 @@
+{
+  "q8_0": {
+    "rows": 50,
+    "viability": "22/50",
+    "viability_ci": [
+      31.2,
+      57.7
+    ],
+    "validity": "18/50",
+    "seeds_improved": 5,
+    "per_seed_best": {
+      "42": 0.936,
+      "123": 1.3,
+      "456": 0.926,
+      "789": 1.083342,
+      "1111": 1.04
+    },
+    "valid_rows": 18,
+    "coord_echo": 2,
+    "score_echo": 4,
+    "score_only_echo": 2,
+    "coord_echo_rate": 0.111,
+    "per_seed_coord_echo": {
+      "42": "0/2",
+      "123": "0/2",
+      "456": "0/6",
+      "789": "1/3",
+      "1111": "1/5"
+    },
+    "probes_valid": 0,
+    "probes_n": 6
+  },
+  "q4_k_m": {
+    "rows": 50,
+    "viability": "22/50",
+    "viability_ci": [
+      31.2,
+      57.7
+    ],
+    "validity": "20/50",
+    "seeds_improved": 5,
+    "per_seed_best": {
+      "42": 1.06,
+      "123": 1.3,
+      "456": 0.936,
+      "789": 1.04,
+      "1111": 0.93285
+    },
+    "valid_rows": 20,
+    "coord_echo": 3,
+    "score_echo": 4,
+    "score_only_echo": 1,
+    "coord_echo_rate": 0.15,
+    "per_seed_coord_echo": {
+      "42": "0/7",
+      "123": "0/3",
+      "456": "2/4",
+      "789": "1/4",
+      "1111": "0/2"
+    },
+    "probes_valid": 0,
+    "probes_n": 6
+  },
+  "q3_k_m": {
+    "rows": 50,
+    "viability": "24/50",
+    "viability_ci": [
+      34.8,
+      61.5
+    ],
+    "validity": "19/50",
+    "seeds_improved": 5,
+    "per_seed_best": {
+      "42": 1.04,
+      "123": 1.3,
+      "456": 0.962,
+      "789": 1.625,
+      "1111": 1.247618
+    },
+    "valid_rows": 19,
+    "coord_echo": 3,
+    "score_echo": 4,
+    "score_only_echo": 1,
+    "coord_echo_rate": 0.158,
+    "per_seed_coord_echo": {
+      "42": "0/4",
+      "123": "1/4",
+      "456": "0/4",
+      "789": "1/3",
+      "1111": "1/4"
+    },
+    "probes_valid": 0,
+    "probes_n": 6
+  },
+  "q2_k": {
+    "rows": 50,
+    "viability": "19/50",
+    "viability_ci": [
+      25.9,
+      51.8
+    ],
+    "validity": "18/50",
+    "seeds_improved": 1,
+    "per_seed_best": {
+      "42": 0.89999,
+      "123": 0.89999,
+      "456": 0.89999,
+      "789": 0.89999,
+      "1111": 1.625
+    },
+    "valid_rows": 18,
+    "coord_echo": 17,
+    "score_echo": 17,
+    "score_only_echo": 0,
+    "coord_echo_rate": 0.944,
+    "per_seed_coord_echo": {
+      "42": "7/7",
+      "123": "4/4",
+      "456": "4/4",
+      "789": "1/1",
+      "1111": "1/2"
+    },
+    "probes_valid": 0,
+    "probes_n": 6
+  },
+  "_tests": {
+    "coord_echo_q2k_vs_upper_fisher_p_DESCRIPTIVE": 5.706145922886664e-10,
+    "improvement_seed_level": {
+      "upper_improved": [
+        5,
+        5,
+        5
+      ],
+      "q2_k_improved": 1,
+      "fisher_p_15v5_pooled": 0.0010319917440660474
+    },
+    "canonical_emissions": 0
+  },
+  "_predictions": {
+    "P1_upper_improve_ge4of5": true,
+    "P1_q2k_improve_le2of5": true,
+    "P2_q2k_coord_echo_ge60pct": true,
+    "P2_upper_coord_echo_le35pct_each": true,
+    "P4_probes_valid_total": 0,
+    "P4_canonical_never": true
+  }
+}

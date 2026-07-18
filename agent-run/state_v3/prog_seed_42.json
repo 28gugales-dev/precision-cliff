@@ -1,0 +1,33 @@
+{
+  "arm": "prog_haiku",
+  "seed": 42,
+  "gen": 10,
+  "archive": {
+    "(4, 1)": {
+      "score": 0.8999899999999995,
+      "gen": -1
+    },
+    "(7, 9)": {
+      "score": 1.3707728818887315,
+      "gen": 0
+    },
+    "(7, 8)": {
+      "score": 1.3673347090806929,
+      "gen": 1
+    },
+    "(7, 11)": {
+      "score": 1.5374922902583381,
+      "gen": 2
+    },
+    "(7, 10)": {
+      "score": 1.5374016241062711,
+      "gen": 7
+    },
+    "(11, 11)": {
+      "score": 2.166666664053667,
+      "gen": 9
+    }
+  },
+  "best_score": 2.166666664053667,
+  "best_program": "import math\nimport random\n\ndef solve():\n    random.seed(42)\n    n = 26\n\n    def hexagonal_packing(n_circles, aspect_ratio=1.0):\n        \"\"\"Generate initial hexagonal packing with tunable aspect ratio.\"\"\"\n        positions = []\n        sqrt_n = math.sqrt(n_circles)\n\n        # Estimate grid dimensions for hexagonal packing\n        rows = int(math.ceil(sqrt_n / math.sqrt(aspect_ratio)))\n        cols = int(math.ceil(sqrt_n * math.sqrt(aspect_ratio)))\n\n        row_height = 1.0 / (rows + 0.5) if rows > 1 else 1.0\n\n        for row in range(rows):\n            # Hexagonal offset: alternate rows are offset horizontally\n            x_offset = 0.25 if row % 2 == 1 else 0.0\n            y = (row + 0.5) * row_height\n\n            for col in range(cols):\n                if len(positions) >= n_circles:\n                    break\n\n                x = (col + 0.5 + x_offset) / (cols + 0.5)\n                positions.append([x, y])\n\n            if len(positions) >= n_circles:\n                break\n\n        return positions[:n_circles]\n\n    def square_packing(n_circles):\n        \"\"\"Generate initial square packing.\"\"\"\n        positions = []\n        side = int(math.ceil(math.sqrt(n_circles)))\n\n        for i in range(n_circles):\n            row = i // side\n            col = i % side\n            x = (col + 0.5) / side\n            y = (row + 0.5) / side\n            positions.append([x, y])\n\n        return positions\n\n    def optimize_configuration(positions, max_iterations=800):\n        \"\"\"Grow radii iteratively, tracking convergence carefully.\"\"\"\n        positions = [list(p) for p in positions]  # Copy\n        radii = [0.001] * n\n\n        for iteration in range(max_iterations):\n            max_change = 0.0\n\n            for i in range(n):\n                x, y = positions[i]\n\n                # Maximum radius limited by square boundaries\n                max_r = min(x, y, 1.0 - x, 1.0 - y)\n\n                # Maximum radius limited by other circles (with small gap for numerical stability)\n                for j in range(n):\n                    if i != j:\n                        xj, yj = positions[j]\n                        rj = radii[j]\n                        dx = x - xj\n                        dy = y - yj\n                        dist = math.sqrt(dx * dx + dy * dy)\n                        max_r = min(max_r, max(dist - rj - 1e-12, 0.0))\n\n                # Only grow, never shrink\n                if max_r > radii[i]:\n                    change = max_r - radii[i]\n                    max_change = max(max_change, change)\n                    radii[i] = max_r\n\n            # Early stopping with tight convergence threshold\n            if max_change < 1e-11:\n                break\n\n        # Final validation and clamp\n        for i in range(n):\n            x, y = positions[i]\n            radii[i] = min(radii[i], x, y, 1.0 - x, 1.0 - y)\n\n        return positions, radii, sum(radii)\n\n    def perturb_positions(positions, perturbation=0.02):\n        \"\"\"Lightly perturb positions for better packing.\"\"\"\n        perturbed = []\n        for x, y in positions:\n            dx = random.uniform(-perturbation, perturbation)\n            dy = random.uniform(-perturbation, perturbation)\n            px = max(0.01, min(0.99, x + dx))\n            py = max(0.01, min(0.99, y + dy))\n            perturbed.append([px, py])\n        return perturbed\n\n    best_circles = None\n    best_score = -1.0\n\n    # Strategy 1: Pure hexagonal packing with different aspect ratios\n    for aspect in [0.8, 1.0, 1.2]:\n        positions = hexagonal_packing(n, aspect)\n        pos, radii, score = optimize_configuration(positions)\n\n        if score > best_score:\n            best_score = score\n            best_circles = [[pos[i][0], pos[i][1], radii[i]] for i in range(n)]\n\n    # Strategy 2: Square packing with perturbations\n    base_positions = square_packing(n)\n    for perturb_iter in range(3):\n        if perturb_iter == 0:\n            positions = base_positions\n        else:\n            positions = perturb_positions(base_positions, perturbation=0.01 + 0.005 * perturb_iter)\n\n        pos, radii, score = optimize_configuration(positions)\n\n        if score > best_score:\n            best_score = score\n            best_circles = [[pos[i][0], pos[i][1], radii[i]] for i in range(n)]\n\n    # Strategy 3: Hybrid approaches - hexagonal with different row structures\n    for offset_rows in [1, 2]:\n        positions = []\n        cols_per_row = [6, 5, 5, 6, 5, 6]  # Alternating pattern\n\n        circle_idx = 0\n        for row_idx, cols in enumerate(cols_per_row[:6]):\n            if circle_idx >= n:\n                break\n\n            y = (row_idx + 0.5) / 6.0\n            x_offset = 0.25 if row_idx % offset_rows == 1 else 0.0\n\n            for col_idx in range(cols):\n                if circle_idx >= n:\n                    break\n                x = (col_idx + 0.5 + x_offset) / (cols + 0.5)\n                positions.append([x, y])\n                circle_idx += 1\n\n        pos, radii, score = optimize_configuration(positions)\n\n        if score > best_score:\n            best_score = score\n            best_circles = [[pos[i][0], pos[i][1], radii[i]] for i in range(n)]\n\n    # Build final result with triple safety check\n    result = []\n    for i in range(n):\n        x, y, r = best_circles[i]\n\n        # Clamp radius to be safely within boundaries\n        r = min(r, x, y, 1.0 - x, 1.0 - y)\n\n        # Verify no boundary violation and add extra safety margin\n        r = max(0.0, r - 1e-10)\n\n        result.append([x, y, r])\n\n    return result\n\ncircles = solve()\nprint(circles)\n"
+}

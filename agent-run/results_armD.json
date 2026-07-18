@@ -1,0 +1,30 @@
+{
+  "arm": "prog_haiku",
+  "bests": {
+    "42": 2.166667,
+    "123": 2.478739,
+    "456": 2.53714,
+    "789": 1.658621,
+    "1111": 2.388605
+  },
+  "mean_best": 2.245954,
+  "viable": 33,
+  "valid": 31,
+  "n": 50,
+  "viable_ci95": [
+    52.2,
+    77.6
+  ],
+  "valid_ci95": [
+    48.2,
+    74.1
+  ],
+  "errors": {
+    "crash": 3,
+    "timeout": 10
+  },
+  "climb_events": 12,
+  "sd_best_sample": 0.357272,
+  "sd_best_population": 0.319556,
+  "note": "paper table uses population std (0.3196) matching Arms A-C convention"
+}

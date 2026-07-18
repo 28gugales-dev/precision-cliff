@@ -1,0 +1,159 @@
+import math
+import random
+
+def pack_circles():
+    """Pack 26 circles in unit square, maximizing sum of radii."""
+    random.seed(789)
+
+    circles = []
+
+    # Phase 1: Greedy placement with adaptive grid density
+    for circle_idx in range(26):
+        candidates = []
+
+        # Adaptive grid density: more dense for early circles
+        grid_density = 8 if circle_idx < 8 else 6 if circle_idx < 16 else 4
+        for i in range(grid_density):
+            for j in range(grid_density):
+                x = 0.05 + i * (0.9 / max(1, grid_density - 1))
+                y = 0.05 + j * (0.9 / max(1, grid_density - 1))
+                candidates.append((x, y))
+
+        # Adaptive random sampling: fewer random candidates as space fills
+        num_random = 300 - circle_idx * 8
+        for _ in range(max(80, num_random)):
+            x = random.uniform(0.005, 0.995)
+            y = random.uniform(0.005, 0.995)
+            candidates.append((x, y))
+
+        # Find best position
+        best_circle = None
+        best_r = 0
+        for x, y in candidates:
+            r_max = compute_max_radius(x, y, circles)
+            if r_max > best_r and r_max > 1e-8:
+                best_r = r_max
+                best_circle = [x, y, r_max]
+
+        if best_circle:
+            circles.append(best_circle)
+
+    # Phase 2: Multi-pass position refinement with decreasing step size
+    max_iterations = 15
+    for iteration in range(max_iterations):
+        base_step = 0.011 * (1.0 - iteration / (max_iterations + 1))
+        improved = False
+
+        for idx in range(len(circles)):
+            x, y, r = circles[idx]
+            current_score = sum(c[2] for c in circles)
+            best_score = current_score
+            best_x, best_y = x, y
+
+            # Multi-scale search: try various step sizes
+            for dx in [-base_step, -base_step*0.4, 0, base_step*0.4, base_step]:
+                for dy in [-base_step, -base_step*0.4, 0, base_step*0.4, base_step]:
+                    if dx == 0 and dy == 0:
+                        continue
+                    nx = x + dx
+                    ny = y + dy
+                    if 0.0005 <= nx <= 0.9995 and 0.0005 <= ny <= 0.9995:
+                        nr = compute_max_radius(nx, ny, circles, skip_idx=idx)
+                        new_score = current_score - r + nr
+                        if new_score > best_score + 1e-12:
+                            best_score = new_score
+                            best_x, best_y = nx, ny
+                            improved = True
+
+            if (best_x, best_y) != (x, y):
+                circles[idx][0] = best_x
+                circles[idx][1] = best_y
+                circles[idx][2] = compute_max_radius(best_x, best_y, circles, skip_idx=idx)
+
+        if not improved and iteration > 6:
+            break
+
+    # Phase 3: Radius growth pass - maximize radii without position changes
+    for idx in range(len(circles)):
+        x, y = circles[idx][:2]
+        circles[idx][2] = compute_max_radius(x, y, circles, skip_idx=idx)
+
+    # Phase 4: Final fine-grained position refinement
+    for iteration in range(8):
+        step = 0.003 * (1.0 - iteration / 8.0)
+
+        for idx in range(len(circles)):
+            x, y, r = circles[idx]
+            current_score = sum(c[2] for c in circles)
+            best_score = current_score
+            best_x, best_y = x, y
+
+            for dx in [-step, 0, step]:
+                for dy in [-step, 0, step]:
+                    if dx == 0 and dy == 0:
+                        continue
+                    nx = x + dx
+                    ny = y + dy
+                    if 0.0005 <= nx <= 0.9995 and 0.0005 <= ny <= 0.9995:
+                        nr = compute_max_radius(nx, ny, circles, skip_idx=idx)
+                        new_score = current_score - r + nr
+                        if new_score > best_score + 1e-12:
+                            best_score = new_score
+                            best_x, best_y = nx, ny
+
+            if (best_x, best_y) != (x, y):
+                circles[idx][0] = best_x
+                circles[idx][1] = best_y
+                circles[idx][2] = compute_max_radius(best_x, best_y, circles, skip_idx=idx)
+
+    # Phase 5: Final radius maximization
+    for idx in range(len(circles)):
+        x, y = circles[idx][:2]
+        circles[idx][2] = compute_max_radius(x, y, circles, skip_idx=idx)
+
+    return circles
+
+def compute_max_radius(x, y, circles, skip_idx=-1):
+    """Compute the maximum radius for a circle at (x, y) without overlaps."""
+    # Boundary constraints
+    r_max = min(x, y, 1.0 - x, 1.0 - y)
+
+    # Non-overlap constraints with existing circles
+    for i, (cx, cy, cr) in enumerate(circles):
+        if i == skip_idx:
+            continue
+        dist = math.sqrt((x - cx) ** 2 + (y - cy) ** 2)
+        r_max = min(r_max, max(0.0, dist - cr))
+
+    return max(0.0, r_max)
+
+def validate_geometry(circles):
+    """Validate that the packing is geometrically valid."""
+    if len(circles) != 26:
+        return False
+
+    # Boundary constraints
+    for x, y, r in circles:
+        if r < 0 or x - r < -1e-9 or x + r > 1.0 + 1e-9:
+            return False
+        if y - r < -1e-9 or y + r > 1.0 + 1e-9:
+            return False
+
+    # Non-overlap constraints
+    for i, (x1, y1, r1) in enumerate(circles):
+        for x2, y2, r2 in circles[i + 1:]:
+            dist = math.sqrt((x1 - x2) ** 2 + (y1 - y2) ** 2)
+            if dist < r1 + r2 - 1e-9:
+                return False
+
+    return True
+
+# Generate and validate the packing
+result = pack_circles()
+
+# Minimal shrinking only if validation fails
+if not validate_geometry(result):
+    for circle in result:
+        circle[2] *= 0.95
+
+print(result)

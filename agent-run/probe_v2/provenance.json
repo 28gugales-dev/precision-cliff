@@ -1,0 +1,25 @@
+{
+  "sonnet_unit_tool_augmented": {
+    "note": "agents autonomously wrote+ran classical optimizers (SLSQP/basin-hopping/greedy); tool_uses 26-88; NOT pure LLM sampling",
+    "scores": [
+      2.545298,
+      2.584992,
+      2.627064,
+      null,
+      2.528356,
+      2.63598
+    ],
+    "missing": "probe_s_4 (agent stalled, no file)"
+  },
+  "haiku_rect": {
+    "note": "mixed: some pure construction (tool_uses 2), some simple greedy code (7-16)",
+    "scores": [
+      2.166667,
+      1.616598,
+      1.9288,
+      2.267625,
+      2.179365,
+      1.33711
+    ]
+  }
+}

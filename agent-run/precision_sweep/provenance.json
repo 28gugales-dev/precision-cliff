@@ -1,0 +1,45 @@
+{
+  "created": "2026-07-17 19:31:32",
+  "gpus": [
+    "Tesla T4, 15360 MiB",
+    "Tesla T4, 15360 MiB"
+  ],
+  "repo": "Qwen/Qwen2.5-Coder-7B-Instruct-GGUF",
+  "gens": 10,
+  "seeds": [
+    42,
+    123,
+    456,
+    789,
+    1111
+  ],
+  "temperature": 0.8,
+  "top_p": 0.95,
+  "conditions": {
+    "q8_0": {
+      "sha256": "b36a4e1c3ddf2ba6fd5501b926128e5fc6430881caaff07e9629bd18f06f685f",
+      "bytes": 8098525184,
+      "filename": "qwen2.5-coder-7b-instruct-q8_0.gguf"
+    },
+    "q4_k_m": {
+      "sha256": "509287f78cb4d4cf6b3843734733b914b2c158e43e22a7f4bf5e963800894d3c",
+      "bytes": 4683073536,
+      "filename": "qwen2.5-coder-7b-instruct-q4_k_m.gguf"
+    },
+    "q3_k_m": {
+      "sha256": "ff5c64615cf8a44651d208e9d8da1f753feefc21605e6c1ee67957aa77257c3c",
+      "bytes": 3808391104,
+      "filename": "qwen2.5-coder-7b-instruct-q3_k_m.gguf"
+    },
+    "q2_k": {
+      "sha256": "6ce2630974b0ef631e2b29064cd10a9cb16b278d001961d72bfd86987392c8d9",
+      "bytes": 3015940032,
+      "filename": "qwen2.5-coder-7b-instruct-q2_k.gguf"
+    },
+    "fp16": {
+      "sha256": "688cb5d19a53f91843be63eacca134c3d7dfe9364c4263c67bbeb8c56bd16554",
+      "bytes": 15237853184,
+      "filename": "qwen2.5-coder-7b-instruct-fp16.gguf"
+    }
+  }
+}
