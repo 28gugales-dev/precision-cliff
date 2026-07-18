@@ -1,0 +1,63 @@
+{
+  "decoder_floor_from_seeded_grid": 2.16665,
+  "matched_budget": {
+    "raw_greedy": {
+      "per_seed_best": [
+        0.91526,
+        0.958989,
+        0.942918,
+        0.951341,
+        0.929787
+      ],
+      "mean_best": 0.939659,
+      "pop_std_best": 0.015579
+    },
+    "raw_sa": {
+      "per_seed_best": [
+        0.901655,
+        0.931197,
+        0.930654,
+        0.951765,
+        0.938905
+      ],
+      "mean_best": 0.930835,
+      "pop_std_best": 0.016461
+    },
+    "repair_greedy": {
+      "per_seed_best": [
+        2.152336,
+        2.132441,
+        2.125687,
+        2.126163,
+        2.123128
+      ],
+      "mean_best": 2.131951,
+      "pop_std_best": 0.010643
+    },
+    "repair_sa": {
+      "per_seed_best": [
+        2.152336,
+        2.132441,
+        2.125934,
+        2.126163,
+        2.123249
+      ],
+      "mean_best": 2.132025,
+      "pop_std_best": 0.010594
+    }
+  },
+  "extended": {
+    "repair_sa_5000": {
+      "per_seed_best": [
+        2.360576,
+        2.311936,
+        2.378863,
+        2.328411,
+        2.360566
+      ],
+      "mean_best": 2.34807,
+      "evals_per_seed": 5000,
+      "note": "NOT budget-matched; classical compute-curve reference only"
+    }
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "created": "2026-07-18 21:59:51",
+  "gpus": [
+    "Tesla T4, 15360 MiB",
+    "Tesla T4, 15360 MiB"
+  ],
+  "repo": "bartowski/Qwen2.5-Coder-14B-Instruct-GGUF",
+  "gens": 10,
+  "seeds": [
+    2222,
+    3333,
+    5555,
+    7777,
+    9999
+  ],
+  "temperature": 0.8,
+  "top_p": 0.95,
+  "runner_version": "14b_iq2_v1",
+  "purpose": "IQ2 algorithm control: unbundle bit-width from quant algorithm",
+  "conditions": {
+    "q2_k_imx": {
+      "sha256": "15325932435e5efc33120a4199963298bca521b961a60ea050eeba7543acab9d",
+      "bytes": 5770498272,
+      "filename": "Qwen2.5-Coder-14B-Instruct-Q2_K.gguf"
+    },
+    "iq2_m": {
+      "sha256": "aa09df429d40831720204f5e037ddd96317f733f70a0377ad01fa9e86be43fa7",
+      "bytes": 5356146912,
+      "filename": "Qwen2.5-Coder-14B-Instruct-IQ2_M.gguf"
+    }
+  }
+}
