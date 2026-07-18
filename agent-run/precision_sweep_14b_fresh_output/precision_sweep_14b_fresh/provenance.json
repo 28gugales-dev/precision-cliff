@@ -1,0 +1,32 @@
+{
+  "created": "2026-07-18 18:03:28",
+  "gpus": [
+    "Tesla T4, 15360 MiB",
+    "Tesla T4, 15360 MiB"
+  ],
+  "repo": "Qwen/Qwen2.5-Coder-14B-Instruct-GGUF",
+  "gens": 10,
+  "seeds": [
+    2222,
+    3333,
+    5555,
+    7777,
+    9999
+  ],
+  "temperature": 0.8,
+  "top_p": 0.95,
+  "runner_version": "14b_fresh_v1",
+  "purpose": "fresh-seed replication + must-differ mechanism probe",
+  "conditions": {
+    "q4_k_m": {
+      "sha256": "c1e659736d89ac1065fb495330fb824d94001974a4bfa78e7270e43476a8d940",
+      "bytes": 8988110272,
+      "filename": "qwen2.5-coder-14b-instruct-q4_k_m.gguf"
+    },
+    "q2_k": {
+      "sha256": "4542a8bb0c0ae6fb3dafeb305c61a8d6b2f894e96bb667d60cda105a1f313176",
+      "bytes": 5770497408,
+      "filename": "qwen2.5-coder-14b-instruct-q2_k.gguf"
+    }
+  }
+}
