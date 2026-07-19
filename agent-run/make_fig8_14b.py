@@ -37,16 +37,29 @@ ax1.legend(fontsize=8)
 r14v2 = json.load(open(os.path.join(HERE, "results_precision_14b_v2.json")))
 improved = [r14v2[q]["seeds_improved"] for q in QUANTS]
 echo_frac = [100 * r14v2[q]["coord_echo"] / r14v2[q]["valid_rows"] for q in QUANTS]
-ax2.plot(BPW, [i * 20 for i in improved], "o-", color="#d4380d",
-         label="seeds improving past baseline (% of 5)")
-ax2.plot(BPW, echo_frac, "s--", color="#722ed1",
-         label="valid outputs echoing their parent (coordinate-verified, %)")
+
+# Primary series: coordinate-verified parent-echo rate (bars, prominent).
+bars = ax2.bar(BPW, echo_frac, width=0.35, color="#722ed1", alpha=0.85,
+                label="valid outputs echoing their parent (coordinate-verified, %)")
 ax2.set_xlabel("effective bits per weight")
-ax2.set_ylabel("%")
-ax2.set_title("14B novelty cliff at 2-bit: copying replaces mutating")
+ax2.set_ylabel("parent-echo rate (%)", color="#722ed1")
+ax2.tick_params(axis="y", labelcolor="#722ed1")
 ax2.set_ylim(-3, 105)
 ax2.invert_xaxis()
-ax2.legend(fontsize=8)
+
+# Secondary series: seeds improving past baseline, muted line on twin axis.
+ax2b = ax2.twinx()
+ax2b.plot(BPW, [i * 20 for i in improved], "o--", color="#bfbfbf", lw=1.3,
+          ms=4, alpha=0.8, label="seeds improving past baseline (% of 5)")
+ax2b.set_ylabel("seeds improving (%)", color="#8c8c8c")
+ax2b.tick_params(axis="y", labelcolor="#8c8c8c")
+ax2b.set_ylim(-3, 105)
+
+ax2.set_title(f"novelty cliff: parent-echo spikes at Q2_K "
+              f"({echo_frac[0]:.0f}%->{echo_frac[-1]:.0f}%)")
+h1, l1 = ax2.get_legend_handles_labels()
+h2, l2 = ax2b.get_legend_handles_labels()
+ax2.legend(h1 + h2, l1 + l2, fontsize=7, loc="upper left")
 
 fig.tight_layout()
 fig.savefig(os.path.join(FIGS, "fig8_14b_novelty_cliff.png"), dpi=150)

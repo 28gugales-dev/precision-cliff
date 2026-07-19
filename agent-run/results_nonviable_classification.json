@@ -1,0 +1,474 @@
+{
+  "v2_14b_reexecution": {
+    "source_file": "C:\\Users\\soham\\AppData\\Local\\hermes\\research-corpus\\agent-run\\precision_sweep_14b_v2_output\\precision_sweep_14b\\candidates_precision_14b.jsonl",
+    "rungs": {
+      "q8_0": {
+        "total_rows": 50,
+        "valid": 18,
+        "invalid": 32,
+        "bins": {
+          "near_copy": 4,
+          "attempted_mutation": 28,
+          "attempted_packing_broken": 0,
+          "attempted_packing_broken_partial_copy": 0,
+          "garbage_or_truncation": 0,
+          "gen_error": 0,
+          "unclassified": 0
+        },
+        "examples": {
+          "near_copy": [
+            {
+              "seed": 123,
+              "gen": 7,
+              "overlap_frac": 0.963,
+              "n_circles": 27
+            },
+            {
+              "seed": 123,
+              "gen": 8,
+              "overlap_frac": 0.962,
+              "n_circles": 26
+            },
+            {
+              "seed": 123,
+              "gen": 9,
+              "overlap_frac": 0.963,
+              "n_circles": 27
+            }
+          ],
+          "attempted_mutation": [
+            {
+              "seed": 42,
+              "gen": 1,
+              "overlap_frac": 0.0,
+              "n_circles": 24
+            },
+            {
+              "seed": 42,
+              "gen": 3,
+              "overlap_frac": 0.0,
+              "n_circles": 27
+            },
+            {
+              "seed": 42,
+              "gen": 4,
+              "overlap_frac": 0.0,
+              "n_circles": 25
+            }
+          ],
+          "attempted_packing_broken": [],
+          "attempted_packing_broken_partial_copy": [],
+          "garbage_or_truncation": [],
+          "gen_error": [],
+          "unclassified": []
+        }
+      },
+      "q4_k_m": {
+        "total_rows": 50,
+        "valid": 20,
+        "invalid": 30,
+        "bins": {
+          "near_copy": 2,
+          "attempted_mutation": 28,
+          "attempted_packing_broken": 0,
+          "attempted_packing_broken_partial_copy": 0,
+          "garbage_or_truncation": 0,
+          "gen_error": 0,
+          "unclassified": 0
+        },
+        "examples": {
+          "near_copy": [
+            {
+              "seed": 123,
+              "gen": 4,
+              "overlap_frac": 1.0,
+              "n_circles": 25
+            },
+            {
+              "seed": 1111,
+              "gen": 8,
+              "overlap_frac": 0.92,
+              "n_circles": 25
+            }
+          ],
+          "attempted_mutation": [
+            {
+              "seed": 42,
+              "gen": 1,
+              "overlap_frac": 0.0,
+              "n_circles": 22
+            },
+            {
+              "seed": 42,
+              "gen": 3,
+              "overlap_frac": 0.0,
+              "n_circles": 25
+            },
+            {
+              "seed": 42,
+              "gen": 4,
+              "overlap_frac": 0.0,
+              "n_circles": 25
+            }
+          ],
+          "attempted_packing_broken": [],
+          "attempted_packing_broken_partial_copy": [],
+          "garbage_or_truncation": [],
+          "gen_error": [],
+          "unclassified": []
+        }
+      },
+      "q3_k_m": {
+        "total_rows": 50,
+        "valid": 19,
+        "invalid": 31,
+        "bins": {
+          "near_copy": 6,
+          "attempted_mutation": 25,
+          "attempted_packing_broken": 0,
+          "attempted_packing_broken_partial_copy": 0,
+          "garbage_or_truncation": 0,
+          "gen_error": 0,
+          "unclassified": 0
+        },
+        "examples": {
+          "near_copy": [
+            {
+              "seed": 789,
+              "gen": 2,
+              "overlap_frac": 0.963,
+              "n_circles": 27
+            },
+            {
+              "seed": 789,
+              "gen": 3,
+              "overlap_frac": 0.963,
+              "n_circles": 27
+            },
+            {
+              "seed": 789,
+              "gen": 4,
+              "overlap_frac": 0.963,
+              "n_circles": 27
+            }
+          ],
+          "attempted_mutation": [
+            {
+              "seed": 42,
+              "gen": 1,
+              "overlap_frac": 0.0,
+              "n_circles": 25
+            },
+            {
+              "seed": 42,
+              "gen": 2,
+              "overlap_frac": 0.0,
+              "n_circles": 25
+            },
+            {
+              "seed": 42,
+              "gen": 4,
+              "overlap_frac": 0.0,
+              "n_circles": 25
+            }
+          ],
+          "attempted_packing_broken": [],
+          "attempted_packing_broken_partial_copy": [],
+          "garbage_or_truncation": [],
+          "gen_error": [],
+          "unclassified": []
+        }
+      },
+      "q2_k": {
+        "total_rows": 50,
+        "valid": 18,
+        "invalid": 32,
+        "bins": {
+          "near_copy": 18,
+          "attempted_mutation": 14,
+          "attempted_packing_broken": 0,
+          "attempted_packing_broken_partial_copy": 0,
+          "garbage_or_truncation": 0,
+          "gen_error": 0,
+          "unclassified": 0
+        },
+        "examples": {
+          "near_copy": [
+            {
+              "seed": 42,
+              "gen": 8,
+              "overlap_frac": 0.963,
+              "n_circles": 27
+            },
+            {
+              "seed": 123,
+              "gen": 1,
+              "overlap_frac": 0.963,
+              "n_circles": 27
+            },
+            {
+              "seed": 123,
+              "gen": 4,
+              "overlap_frac": 0.963,
+              "n_circles": 27
+            }
+          ],
+          "attempted_mutation": [
+            {
+              "seed": 42,
+              "gen": 1,
+              "overlap_frac": 0.0,
+              "n_circles": 25
+            },
+            {
+              "seed": 42,
+              "gen": 7,
+              "overlap_frac": 0.0,
+              "n_circles": 27
+            },
+            {
+              "seed": 123,
+              "gen": 0,
+              "overlap_frac": 0.0,
+              "n_circles": 23
+            }
+          ],
+          "attempted_packing_broken": [],
+          "attempted_packing_broken_partial_copy": [],
+          "garbage_or_truncation": [],
+          "gen_error": [],
+          "unclassified": []
+        }
+      }
+    }
+  },
+  "fresh_seed_14b": {
+    "source_file": "C:\\Users\\soham\\AppData\\Local\\hermes\\research-corpus\\agent-run\\precision_sweep_14b_fresh_output\\precision_sweep_14b_fresh\\candidates_precision_14b_fresh.jsonl",
+    "rungs": {
+      "q4_k_m": {
+        "total_rows": 50,
+        "valid": 17,
+        "invalid": 33,
+        "bins": {
+          "near_copy": 0,
+          "attempted_mutation": 33,
+          "attempted_packing_broken": 0,
+          "attempted_packing_broken_partial_copy": 0,
+          "garbage_or_truncation": 0,
+          "gen_error": 0,
+          "unclassified": 0
+        },
+        "examples": {
+          "near_copy": [],
+          "attempted_mutation": [
+            {
+              "seed": 2222,
+              "gen": 0,
+              "overlap_frac": 0.0,
+              "n_circles": 27
+            },
+            {
+              "seed": 2222,
+              "gen": 2,
+              "overlap_frac": 0.0,
+              "n_circles": 22
+            },
+            {
+              "seed": 2222,
+              "gen": 3,
+              "overlap_frac": 0.0,
+              "n_circles": 25
+            }
+          ],
+          "attempted_packing_broken": [],
+          "attempted_packing_broken_partial_copy": [],
+          "garbage_or_truncation": [],
+          "gen_error": [],
+          "unclassified": []
+        }
+      },
+      "q2_k": {
+        "total_rows": 50,
+        "valid": 24,
+        "invalid": 26,
+        "bins": {
+          "near_copy": 15,
+          "attempted_mutation": 11,
+          "attempted_packing_broken": 0,
+          "attempted_packing_broken_partial_copy": 0,
+          "garbage_or_truncation": 0,
+          "gen_error": 0,
+          "unclassified": 0
+        },
+        "examples": {
+          "near_copy": [
+            {
+              "seed": 2222,
+              "gen": 8,
+              "overlap_frac": 0.963,
+              "n_circles": 27
+            },
+            {
+              "seed": 2222,
+              "gen": 9,
+              "overlap_frac": 0.963,
+              "n_circles": 27
+            },
+            {
+              "seed": 3333,
+              "gen": 0,
+              "overlap_frac": 0.963,
+              "n_circles": 27
+            }
+          ],
+          "attempted_mutation": [
+            {
+              "seed": 2222,
+              "gen": 0,
+              "overlap_frac": 0.0,
+              "n_circles": 26
+            },
+            {
+              "seed": 2222,
+              "gen": 2,
+              "overlap_frac": 0.0,
+              "n_circles": 36
+            },
+            {
+              "seed": 2222,
+              "gen": 6,
+              "overlap_frac": 0.0,
+              "n_circles": 25
+            }
+          ],
+          "attempted_packing_broken": [],
+          "attempted_packing_broken_partial_copy": [],
+          "garbage_or_truncation": [],
+          "gen_error": [],
+          "unclassified": []
+        }
+      }
+    }
+  },
+  "iq2_control_14b": {
+    "source_file": "C:\\Users\\soham\\AppData\\Local\\hermes\\research-corpus\\agent-run\\precision_sweep_14b_iq2_output\\precision_sweep_14b_iq2\\candidates_precision_14b_iq2.jsonl",
+    "rungs": {
+      "q2_k_imx": {
+        "total_rows": 50,
+        "valid": 32,
+        "invalid": 18,
+        "bins": {
+          "near_copy": 5,
+          "attempted_mutation": 13,
+          "attempted_packing_broken": 0,
+          "attempted_packing_broken_partial_copy": 0,
+          "garbage_or_truncation": 0,
+          "gen_error": 0,
+          "unclassified": 0
+        },
+        "examples": {
+          "near_copy": [
+            {
+              "seed": 3333,
+              "gen": 0,
+              "overlap_frac": 0.963,
+              "n_circles": 27
+            },
+            {
+              "seed": 5555,
+              "gen": 6,
+              "overlap_frac": 0.963,
+              "n_circles": 27
+            },
+            {
+              "seed": 7777,
+              "gen": 2,
+              "overlap_frac": 0.963,
+              "n_circles": 27
+            }
+          ],
+          "attempted_mutation": [
+            {
+              "seed": 2222,
+              "gen": 0,
+              "overlap_frac": 0.0,
+              "n_circles": 26
+            },
+            {
+              "seed": 2222,
+              "gen": 4,
+              "overlap_frac": 0.0,
+              "n_circles": 25
+            },
+            {
+              "seed": 2222,
+              "gen": 8,
+              "overlap_frac": 0.0,
+              "n_circles": 25
+            }
+          ],
+          "attempted_packing_broken": [],
+          "attempted_packing_broken_partial_copy": [],
+          "garbage_or_truncation": [],
+          "gen_error": [],
+          "unclassified": []
+        }
+      },
+      "iq2_m": {
+        "total_rows": 50,
+        "valid": 28,
+        "invalid": 22,
+        "bins": {
+          "near_copy": 2,
+          "attempted_mutation": 20,
+          "attempted_packing_broken": 0,
+          "attempted_packing_broken_partial_copy": 0,
+          "garbage_or_truncation": 0,
+          "gen_error": 0,
+          "unclassified": 0
+        },
+        "examples": {
+          "near_copy": [
+            {
+              "seed": 2222,
+              "gen": 1,
+              "overlap_frac": 0.963,
+              "n_circles": 27
+            },
+            {
+              "seed": 9999,
+              "gen": 8,
+              "overlap_frac": 0.5,
+              "n_circles": 24
+            }
+          ],
+          "attempted_mutation": [
+            {
+              "seed": 2222,
+              "gen": 0,
+              "overlap_frac": 0.0,
+              "n_circles": 26
+            },
+            {
+              "seed": 2222,
+              "gen": 2,
+              "overlap_frac": 0.0,
+              "n_circles": 25
+            },
+            {
+              "seed": 2222,
+              "gen": 4,
+              "overlap_frac": 0.0,
+              "n_circles": 28
+            }
+          ],
+          "attempted_packing_broken": [],
+          "attempted_packing_broken_partial_copy": [],
+          "garbage_or_truncation": [],
+          "gen_error": [],
+          "unclassified": []
+        }
+      }
+    }
+  }
+}
