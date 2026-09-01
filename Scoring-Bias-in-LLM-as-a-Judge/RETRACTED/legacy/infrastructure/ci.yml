@@ -1,0 +1,71 @@
+name: CI
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.11']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Cache pip
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+      - name: Install dependencies
+        run: |
+          pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install pytest pytest-cov
+      - name: Run tests
+        run: python -m pytest tests/ -v --tb=short --cov=. --cov-report=term
+
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install linters
+        run: pip install flake8 black
+      - name: Run flake8
+        run: |
+          flake8 results_rootcause/*.py tests/*.py pipeline_rootcause/*.py \
+            --max-line-length=100 --count --statistics
+      - name: Run black (check mode)
+        run: |
+          black --check --diff results_rootcause/*.py tests/*.py pipeline_rootcause/*.py
+
+  paper-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check paper structure
+        run: |
+          echo "=== Verifying paper directory structure ==="
+          test -f paper/camera_ready_full.tex && echo "✓ Main paper exists"
+          test -f paper/generate_png_figures.py && echo "✓ Figure generator exists"
+          test -f paper/arxiv_package.py && echo "✓ arXiv packager exists"
+          test -f paper/generate_pdf.py && echo "✓ PDF generator exists"
+
+  docker:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build Docker image
+        run: docker build -t scoring-bias .
+      - name: Verify image builds
+        run: docker run --rm scoring-bias python -c "import transformers; print('✓ Transformers', transformers.__version__)"
