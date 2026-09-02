@@ -63,7 +63,8 @@ def main():
                        if os.path.exists("/proc/cpuinfo") else None,
                 "threads": torch.get_num_threads(), "note": "CPU replication of results_scaled.json"},
         "smoke": bool(SMOKE_ITEMS), "n_items": len(H.ITEMS),
-        "domains": [d for *_, d in H.ITEMS], "errors": {}, "results": {}, "timing_s": {}}
+        "domains": [d for *_, d in H.ITEMS], "errors": {}, "results": {}, "timing_s": {}, "dtype": {}}
+    payload.setdefault("dtype", {})
     print("ENV", payload["env"], flush=True)
     print("families:", [p[0] for p in pairs], "items:", len(H.ITEMS), flush=True)
     for label, base_id, inst_id, pb, train in pairs:
@@ -80,6 +81,7 @@ def main():
                 rec[kind] = H.score_one(mid)
                 dt = time.time() - t0
                 payload["timing_s"][f"{label}/{kind}"] = round(dt, 1)
+                payload["dtype"][f"{label}/{kind}"] = str(_Loader.dtype).split(".")[-1]
                 print(f"  {label}/{kind} ok ({dt:.0f}s, {str(_Loader.dtype).split('.')[-1]})", flush=True)
             except Exception as e:
                 payload["errors"][mid] = f"{type(e).__name__}: {e}"
