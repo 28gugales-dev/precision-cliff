@@ -50,7 +50,9 @@ We study whether a stronger, more instruction-tuned LLM judge is a fairer one. I
 
 Across **13 open-weight families (0.1-8B; 26 checkpoints; 19,500 per-item scores in the
 main panel, over 56,000 across all datasets)** and
-**6 bias types** (rubric order, score ID, reference answer + authority, verbosity, antonym):
+**5 bias types** (rubric order, score ID, reference answer + authority, verbosity), plus a sixth,
+**antonym**, measured so far on the 10 families up to 3B in a CPU replication
+(`PREREGISTRATION_ANTONYM.md` carries the interim PA1-PA4 outcomes):
 
 - Instruction tuning **sharpens** the score distribution (entropy 2.04 -> 1.45 bits, 11/13 families)...
 - ...yet **increases** bias (pooled per-item instruct coef **+0.16**, family-clustered OLS **p=4e-6**; exact sign-flip
@@ -92,7 +94,8 @@ python analyze_mechanism.py     # entropy<->bias, generality, predictor, mitigat
 python analyze_gold.py          # ground-truth discrimination
 python analyze_robustness.py    # clustered stats, spec curve, permutation, forest, anatomy
 python analyze_stages.py        # preregistered stage ablation (P7-P9)
-python analyze_antonym.py       # antonym probe: token sensitivity + semantic conflict
+python analyze_antonym.py       # antonym probe (10 families, from the CPU replication file)
+python analyze_cpu_rerun.py     # CPU replication vs the committed GPU panel
 python make_mech_figures.py && python make_concept_figure.py && python make_forest_figure.py
 python make_stage_figure.py && python make_exact_figure.py
 cd .. && pdflatex scoring_bias_v2 && bibtex scoring_bias_v2 && pdflatex scoring_bias_v2 && pdflatex scoring_bias_v2
@@ -105,7 +108,7 @@ files and fails on any numerical drift. **No synthetic or simulated data is used
 
 | Raw file (committed) | Experiment | Harness |
 |---|---|---|
-| `paper/honest/repro/results_scaled.json` | 13 families x 6 bias types (incl. antonym), per-item + distributions | `scaled_harness.py` |
+| `paper/honest/repro/results_scaled.json` | 13 families x 5 bias types, per-item + distributions (GPU, fp16) | `scaled_harness.py` |
 | `paper/honest/repro/gold_results.json` | 20 gold good/bad pairs | `gold_harness.py` |
 | `paper/honest/repro/patch_results.json` | activation patching (per layer) | `patch_harness.py` |
 | `paper/honest/repro/results_multitemplate.json` | 3 prompt templates x 3 families | `multitemplate_harness.py` |
@@ -125,7 +128,7 @@ files and fails on any numerical drift. **No synthetic or simulated data is used
 | `paper/honest/repro/results_sampled.json` | sampled-parse protocol comparison | `sampled_harness.py` |
 | `paper/honest/repro/spanpatch_results.json` | nuisance-span patching (P13) | `spanpatch_harness.py` |
 | `paper/honest/repro/patch_results_qwen05.json` | activation patching, second family | `patch_harness.py` |
-| `paper/honest/repro/results_antonym.json` | antonym probe: 3 variants x 13 families (standalone) | `antonym_harness.py` |
+| `paper/honest/repro/results_scaled_cpu_rerun.json` | CPU replication of the main panel, 10 families up to 3B x 6 bias types (the 5 above plus antonym); `analyze_cpu_rerun.py` reports its agreement with the GPU run | `cpu_rerun.py` (wraps `scaled_harness.py`) |
 
 All twenty are listed; `tests/test_the_release_promises_hold.py` checks the table against the
 directory, because a hand-written list of what matters is how the paper's own reproduction recipe

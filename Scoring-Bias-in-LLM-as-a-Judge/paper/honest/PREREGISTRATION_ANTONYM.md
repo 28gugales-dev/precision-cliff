@@ -57,4 +57,36 @@ counts.
 
 ## Outcomes
 
-(To be filled after data collection.)
+**Interim outcomes (recorded 2026-09-03; 10 of the 13 registered families).**
+The three 7B to 8B families (Qwen2.5-7B, OLMo-2-7B, Granite-3.1-8B) have not
+been run: they need a GPU, and the data below came from a CPU replication
+(`repro/cpu_rerun.py`, fp32 up to 0.5B and bfloat16 above, recorded per
+checkpoint in `repro/results_scaled_cpu_rerun.json`). The registered
+thresholds were written for 13 families; the counts below are reported
+against 10 and the final verdicts wait for the full panel. Analysis:
+`repro/analyze_antonym.py results_scaled_cpu_rerun.json` →
+`repro/results_antonym_analysis.json`.
+
+- **PA1 (token sensitivity): met, 10/10.** Every family's pooled mean under
+  `replaced` differs from `standard` by more than 0.05; the mean shift is
+  +0.54 (base) and +0.72 (instruct). The synonym set is not neutral: judges
+  put more mass on "Strong" and "Outstanding" than on "Great" and
+  "Excellent" with the same numeric mapping.
+- **PA2 (semantic conflict beats token replacement): not met, 5/10.** The
+  `flipped` shift is larger than the `replaced` shift in half the families.
+  Direction of the `flipped` shift is negative in both arms (base −0.59,
+  instruct −0.62), so judges do follow the word rather than the position;
+  the effect is just not larger than the token-replacement effect.
+- **PA3 (instruct amplification): not met, 5/10.** Instruct delta exceeds
+  base delta in 5 families (mean change +0.28, bootstrap 95% CI
+  [−0.20, 0.81], Wilcoxon p = 0.49, dz = 0.35). Qwen2.5-3B goes the other
+  way strongly (1.12 → 0.26); Falcon3-1B and StableLM-2-1.6B go up strongly
+  (+1.79, +1.48).
+- **PA4 (conflict sensitivity): not met, 6/10, Wilcoxon p = 0.63.**
+
+Net reading at 10 families: the antonym manipulation is a large bias (mean
+delta 1.36 base, 1.64 instruct, larger than any of the five original probes)
+that is driven mainly by token identity, and instruction tuning does not
+amplify it consistently. This is the first probe in the project where the
+tuning effect is not directionally positive, and it is worth reporting as
+such once the three large families are in.

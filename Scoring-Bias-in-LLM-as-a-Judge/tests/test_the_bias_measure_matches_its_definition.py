@@ -30,12 +30,13 @@ REPO = Path(__file__).resolve().parent.parent
 HONEST = REPO / "paper" / "honest"
 REPRO = HONEST / "repro"
 
-# Four copies, not three. I listed the three I had grepped for; the coverage
+# Six copies, not three. I listed the three I had grepped for; the coverage
 # check at the bottom of this file found analyze_stages carrying a fourth, which
-# is exactly the drift risk the file is about.
+# is exactly the drift risk the file is about. The antonym analyzer and the
+# CPU-replication comparison each carry one more.
 IMPLEMENTORS = [
     "analyze_peritem.py", "analyze_mechanism.py", "analyze_robustness.py",
-    "analyze_stages.py",
+    "analyze_stages.py", "analyze_antonym.py", "analyze_cpu_rerun.py",
 ]
 
 

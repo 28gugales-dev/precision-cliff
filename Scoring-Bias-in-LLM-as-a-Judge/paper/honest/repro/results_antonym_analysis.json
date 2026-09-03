@@ -1,22 +1,22 @@
 {
-  "n_families": 9,
+  "n_families": 10,
   "probe": "antonym",
-  "mean_base_delta": 1.4149,
-  "mean_inst_delta": 1.5648,
-  "mean_change": 0.1499,
+  "mean_base_delta": 1.359,
+  "mean_inst_delta": 1.6422,
+  "mean_change": 0.2832,
   "ci_95": [
-    -0.301,
-    0.6729
+    -0.198,
+    0.8082
   ],
-  "cohen_dz": 0.2002,
-  "wilcoxon_p": 0.820312,
-  "n_increased": 4,
+  "cohen_dz": 0.3474,
+  "wilcoxon_p": 0.492188,
+  "n_increased": 5,
   "n_decreased": 5,
-  "replaced_shift_base_mean": 0.6936,
-  "replaced_shift_inst_mean": 0.8519,
-  "flipped_shift_base_mean": -0.6179,
-  "flipped_shift_inst_mean": -0.4245,
-  "conflict_amplification_mean": 0.0489,
+  "replaced_shift_base_mean": 0.5386,
+  "replaced_shift_inst_mean": 0.7204,
+  "flipped_shift_base_mean": -0.5892,
+  "flipped_shift_inst_mean": -0.616,
+  "conflict_amplification_mean": 0.2448,
   "per_family": [
     {
       "family": "Falcon3-1B",
@@ -259,6 +259,33 @@
         "standard": 1.3488,
         "replaced": 1.669,
         "flipped": 1.1798
+      }
+    },
+    {
+      "family": "StableLM-2-1.6B",
+      "params_b": 1.6,
+      "base_means": {
+        "standard": 3.1258,
+        "replaced": 2.2696,
+        "flipped": 2.7943
+      },
+      "inst_means": {
+        "standard": 4.3905,
+        "replaced": 3.9282,
+        "flipped": 2.0516
+      },
+      "base_delta": 0.8562,
+      "inst_delta": 2.3389,
+      "delta_change": 1.4827,
+      "base_entropy": {
+        "standard": 1.7874,
+        "replaced": 1.7882,
+        "flipped": 2.2492
+      },
+      "inst_entropy": {
+        "standard": 1.1999,
+        "replaced": 0.2347,
+        "flipped": 0.3809
       }
     }
   ]

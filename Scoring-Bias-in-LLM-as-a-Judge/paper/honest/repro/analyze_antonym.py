@@ -5,11 +5,12 @@ import json, sys, pathlib, numpy as np
 from scipy import stats
 
 HERE = pathlib.Path(__file__).resolve().parent
-SRC = pathlib.Path(sys.argv[1]) if len(sys.argv) > 1 else HERE / "results_scaled.json"
+# The antonym probe is recorded in the CPU replication file, not in results_scaled.json.
+SRC = pathlib.Path(sys.argv[1]) if len(sys.argv) > 1 else HERE / "results_scaled_cpu_rerun.json"
 SEED = 42
 N_BOOT = 10_000
 
-CONTROL = {"antonym": "standard"}
+ANTONYM_CONTROL = "standard"   # shared with score_id: descriptive in the main panel
 PROBE = "antonym"
 VARIANTS = ["standard", "replaced", "flipped"]
 

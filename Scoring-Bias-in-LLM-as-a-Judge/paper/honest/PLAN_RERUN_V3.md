@@ -113,7 +113,7 @@ W13. **Only absolute scoring.** Real judge use is mostly pairwise. Position
   4-bit): Llama-3.2-1B/3B, Llama-3.1-8B, Gemma-2-2B/9B, Gemma-3-1B/4B,
   Phi-3.5-mini, Mistral-7B-v0.3, Yi-1.5-6B/9B, InternLM2.5-1.8B/7B,
   DeepSeek-LLM-7B, TinyLlama-1.1B, Pythia (via Dolly tunes), OLMo-2-1B/13B,
-  MobileLLM, Qwen3-0.6B/1.7B/4B/8B (base + instruct exist).
+  MobileLLM.
 - **Two full size ladders** inside one family: Qwen2.5 (0.5, 1.5, 3, 7, 14, 32B)
   and Llama-3.x (1, 3, 8, 70B). 32B and 70B in 4-bit on a Kaggle T4x2 or a
   single rented A100 hour. This turns "attenuates with scale" into a

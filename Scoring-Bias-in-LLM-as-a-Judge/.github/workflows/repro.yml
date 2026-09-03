@@ -144,6 +144,8 @@ jobs:
           python analyze_t10.py
           python analyze_tokvar.py
           python analyze_closed.py
+          python analyze_antonym.py
+          python analyze_cpu_rerun.py
       - name: Committed figures must show what the current data produces
         # Content, not bytes: a PDF embeds a creation timestamp, so regenerating
         # always changes the bytes. This compares the text drawn into each figure

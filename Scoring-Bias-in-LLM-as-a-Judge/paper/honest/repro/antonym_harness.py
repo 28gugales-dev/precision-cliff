@@ -111,8 +111,10 @@ PROBES = {
     },
 }
 
+LET = ["A", "B", "C", "D", "E"]   # unused here; keeps token_values identical to scaled_harness.py
+
 def token_values(a):
-    return list(range(1, len(a) + 1))
+    return list(range(5, 0, -1)) if a is LET else list(range(1, len(a) + 1))
 
 def build_prompt(instr, resp, scale, header, ref):
     return (f"{ref}Evaluate the following response to the instruction {scale}.\n"
