@@ -1,0 +1,292 @@
+{
+  "n_families": 10,
+  "probe": "antonym",
+  "mean_base_delta": 1.359,
+  "mean_inst_delta": 1.6422,
+  "mean_change": 0.2832,
+  "ci_95": [
+    -0.198,
+    0.8082
+  ],
+  "cohen_dz": 0.3474,
+  "wilcoxon_p": 0.492188,
+  "n_increased": 5,
+  "n_decreased": 5,
+  "replaced_shift_base_mean": 0.5386,
+  "replaced_shift_inst_mean": 0.7204,
+  "flipped_shift_base_mean": -0.5892,
+  "flipped_shift_inst_mean": -0.616,
+  "conflict_amplification_mean": 0.2448,
+  "per_family": [
+    {
+      "family": "Falcon3-1B",
+      "params_b": 1.0,
+      "base_means": {
+        "standard": 2.6191,
+        "replaced": 3.6217,
+        "flipped": 1.4824
+      },
+      "inst_means": {
+        "standard": 3.5788,
+        "replaced": 4.9642,
+        "flipped": 1.033
+      },
+      "base_delta": 2.1393,
+      "inst_delta": 3.9312,
+      "delta_change": 1.7919,
+      "base_entropy": {
+        "standard": 1.9537,
+        "replaced": 1.855,
+        "flipped": 1.2428
+      },
+      "inst_entropy": {
+        "standard": 1.5039,
+        "replaced": 0.1398,
+        "flipped": 0.1049
+      }
+    },
+    {
+      "family": "Falcon3-3B",
+      "params_b": 3.0,
+      "base_means": {
+        "standard": 2.3437,
+        "replaced": 3.1096,
+        "flipped": 2.9394
+      },
+      "inst_means": {
+        "standard": 1.6464,
+        "replaced": 3.1875,
+        "flipped": 2.7592
+      },
+      "base_delta": 0.7659,
+      "inst_delta": 1.5411,
+      "delta_change": 0.7752,
+      "base_entropy": {
+        "standard": 1.6836,
+        "replaced": 1.663,
+        "flipped": 1.6057
+      },
+      "inst_entropy": {
+        "standard": 0.4703,
+        "replaced": 0.7957,
+        "flipped": 0.5903
+      }
+    },
+    {
+      "family": "Granite-3.1-2B",
+      "params_b": 2.0,
+      "base_means": {
+        "standard": 2.7708,
+        "replaced": 3.2402,
+        "flipped": 2.8197
+      },
+      "inst_means": {
+        "standard": 3.6912,
+        "replaced": 3.4541,
+        "flipped": 2.8059
+      },
+      "base_delta": 0.4694,
+      "inst_delta": 0.8853,
+      "delta_change": 0.4159,
+      "base_entropy": {
+        "standard": 1.8999,
+        "replaced": 2.2238,
+        "flipped": 2.2347
+      },
+      "inst_entropy": {
+        "standard": 0.8855,
+        "replaced": 1.7504,
+        "flipped": 1.9954
+      }
+    },
+    {
+      "family": "Qwen2.5-0.5B",
+      "params_b": 0.5,
+      "base_means": {
+        "standard": 2.4313,
+        "replaced": 3.2349,
+        "flipped": 2.434
+      },
+      "inst_means": {
+        "standard": 2.7542,
+        "replaced": 3.0711,
+        "flipped": 2.4748
+      },
+      "base_delta": 0.8036,
+      "inst_delta": 0.5963,
+      "delta_change": -0.2073,
+      "base_entropy": {
+        "standard": 2.02,
+        "replaced": 1.7932,
+        "flipped": 1.8371
+      },
+      "inst_entropy": {
+        "standard": 2.0718,
+        "replaced": 1.6781,
+        "flipped": 1.525
+      }
+    },
+    {
+      "family": "Qwen2.5-1.5B",
+      "params_b": 1.5,
+      "base_means": {
+        "standard": 3.805,
+        "replaced": 3.5215,
+        "flipped": 2.5773
+      },
+      "inst_means": {
+        "standard": 3.8432,
+        "replaced": 3.2698,
+        "flipped": 2.9305
+      },
+      "base_delta": 1.2277,
+      "inst_delta": 0.9127,
+      "delta_change": -0.315,
+      "base_entropy": {
+        "standard": 1.702,
+        "replaced": 1.3319,
+        "flipped": 1.4135
+      },
+      "inst_entropy": {
+        "standard": 1.6655,
+        "replaced": 1.3673,
+        "flipped": 1.3922
+      }
+    },
+    {
+      "family": "Qwen2.5-3B",
+      "params_b": 3.0,
+      "base_means": {
+        "standard": 3.2076,
+        "replaced": 3.4609,
+        "flipped": 2.3398
+      },
+      "inst_means": {
+        "standard": 2.081,
+        "replaced": 2.2895,
+        "flipped": 2.3375
+      },
+      "base_delta": 1.1211,
+      "inst_delta": 0.2565,
+      "delta_change": -0.8646,
+      "base_entropy": {
+        "standard": 2.0941,
+        "replaced": 1.4202,
+        "flipped": 1.132
+      },
+      "inst_entropy": {
+        "standard": 0.5525,
+        "replaced": 0.5903,
+        "flipped": 0.3506
+      }
+    },
+    {
+      "family": "SmolLM2-1.7B",
+      "params_b": 1.7,
+      "base_means": {
+        "standard": 2.8352,
+        "replaced": 3.6462,
+        "flipped": 2.5238
+      },
+      "inst_means": {
+        "standard": 3.1367,
+        "replaced": 3.702,
+        "flipped": 2.7566
+      },
+      "base_delta": 1.1224,
+      "inst_delta": 0.9454,
+      "delta_change": -0.177,
+      "base_entropy": {
+        "standard": 2.1234,
+        "replaced": 1.9794,
+        "flipped": 2.0108
+      },
+      "inst_entropy": {
+        "standard": 1.8433,
+        "replaced": 1.7438,
+        "flipped": 1.7018
+      }
+    },
+    {
+      "family": "SmolLM2-135M",
+      "params_b": 0.135,
+      "base_means": {
+        "standard": 2.8806,
+        "replaced": 4.0065,
+        "flipped": 1.3716
+      },
+      "inst_means": {
+        "standard": 1.9884,
+        "replaced": 4.4479,
+        "flipped": 1.4335
+      },
+      "base_delta": 2.6349,
+      "inst_delta": 3.0144,
+      "delta_change": 0.3795,
+      "base_entropy": {
+        "standard": 1.7998,
+        "replaced": 1.7682,
+        "flipped": 1.0751
+      },
+      "inst_entropy": {
+        "standard": 1.3978,
+        "replaced": 1.0485,
+        "flipped": 1.0833
+      }
+    },
+    {
+      "family": "SmolLM2-360M",
+      "params_b": 0.36,
+      "base_means": {
+        "standard": 2.5757,
+        "replaced": 3.8699,
+        "flipped": 1.4203
+      },
+      "inst_means": {
+        "standard": 1.5752,
+        "replaced": 3.5757,
+        "flipped": 1.9432
+      },
+      "base_delta": 2.4496,
+      "inst_delta": 2.0005,
+      "delta_change": -0.4491,
+      "base_entropy": {
+        "standard": 1.852,
+        "replaced": 1.4786,
+        "flipped": 1.1894
+      },
+      "inst_entropy": {
+        "standard": 1.3488,
+        "replaced": 1.669,
+        "flipped": 1.1798
+      }
+    },
+    {
+      "family": "StableLM-2-1.6B",
+      "params_b": 1.6,
+      "base_means": {
+        "standard": 3.1258,
+        "replaced": 2.2696,
+        "flipped": 2.7943
+      },
+      "inst_means": {
+        "standard": 4.3905,
+        "replaced": 3.9282,
+        "flipped": 2.0516
+      },
+      "base_delta": 0.8562,
+      "inst_delta": 2.3389,
+      "delta_change": 1.4827,
+      "base_entropy": {
+        "standard": 1.7874,
+        "replaced": 1.7882,
+        "flipped": 2.2492
+      },
+      "inst_entropy": {
+        "standard": 1.1999,
+        "replaced": 0.2347,
+        "flipped": 0.3809
+      }
+    }
+  ]
+}

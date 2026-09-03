@@ -1,0 +1,57 @@
+{
+  "generated": "2026-07-13T14:39:24.522235",
+  "data": {
+    "total_judgments": 16000,
+    "n_judges": 5,
+    "n_items": 400
+  },
+  "interactions": {
+    "claude": {
+      "position_bias": 0.4175,
+      "verbosity_bias": 0.3274999999999997,
+      "sentiment_bias": 0.3674999999999997,
+      "combined_effect": 0.5074999999999998,
+      "interaction_ratio": 0.456179775280899,
+      "pattern": "Cancelling"
+    },
+    "deepseek": {
+      "position_bias": 0.08500000000000041,
+      "verbosity_bias": 0.3674999999999997,
+      "sentiment_bias": 0.31000000000000005,
+      "combined_effect": 0.46250000000000036,
+      "interaction_ratio": 0.6065573770491807,
+      "pattern": "Cancelling"
+    },
+    "gemini": {
+      "position_bias": 0.48,
+      "verbosity_bias": 0.44999999999999973,
+      "sentiment_bias": 0.48750000000000027,
+      "combined_effect": 0.5125000000000002,
+      "interaction_ratio": 0.36155202821869503,
+      "pattern": "Cancelling"
+    },
+    "gpt4o": {
+      "position_bias": 0.25749999999999984,
+      "verbosity_bias": 0.1575000000000002,
+      "sentiment_bias": 0.355,
+      "combined_effect": 0.4224999999999999,
+      "interaction_ratio": 0.5487012987012986,
+      "pattern": "Cancelling"
+    },
+    "llama": {
+      "position_bias": 0.5049999999999999,
+      "verbosity_bias": 0.4700000000000002,
+      "sentiment_bias": 0.45999999999999996,
+      "combined_effect": 1.3900000000000001,
+      "interaction_ratio": 0.9686411149825784,
+      "pattern": "Additive"
+    }
+  },
+  "summary_stats": {
+    "max_ir": 0.9686411149825784,
+    "min_ir": 0.36155202821869503,
+    "mean_ir": 0.5883263188465303,
+    "compounding_count": 0
+  },
+  "note": "Auto-generated from experimental data"
+}

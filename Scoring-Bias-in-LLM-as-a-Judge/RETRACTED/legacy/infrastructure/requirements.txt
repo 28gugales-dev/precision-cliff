@@ -1,0 +1,20 @@
+# Project dependencies  pinned from pip freeze
+# Full environment snapshot in requirements-all.txt
+transformers==5.12.1
+torch>=2.0.0
+accelerate==1.6.0
+huggingface_hub==1.21.0
+numpy==1.26.4
+scipy==1.13.1
+pandas==2.2.2
+matplotlib==3.10.2
+seaborn==0.13.2
+openai==2.24.0
+requests==2.33.0
+tqdm==4.68.4
+pyyaml==6.0.3
+pydantic==2.13.4
+pytest==8.3.4
+pytest-cov==7.1.0
+flake8==7.2.0
+black==24.10.0

@@ -1,0 +1,46 @@
+# Stage 1: Build dependencies
+FROM python:3.11-slim AS builder
+
+LABEL org.opencontainers.image.source="https://github.com/ssamba1/Scoring-Bias-in-LLM-as-a-Judge"
+LABEL org.opencontainers.image.description="LLM-as-a-Judge Bias Research Environment"
+LABEL org.opencontainers.image.version="1.0.0"
+
+WORKDIR /app
+
+# System dependencies for building
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    gcc g++ curl git build-essential \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install Python dependencies. requirements.txt defers to the pinned analysis
+# stack in paper/honest/repro/, so both files have to be present before pip runs
+# -- installing requirements.txt alone used to give the container a numpy and
+# scipy that reproduce none of the paper's numbers.
+COPY requirements.txt .
+COPY paper/honest/repro/requirements-repro.txt paper/honest/repro/
+RUN pip install --no-cache-dir --upgrade pip && \
+    pip install --no-cache-dir -r requirements.txt
+
+# Stage 2: Runtime image (slim)
+FROM python:3.11-slim
+
+WORKDIR /app
+
+# Only copy installed packages from builder
+COPY --from=builder /usr/local/lib/python3.11/site-packages /usr/local/lib/python3.11/site-packages
+COPY --from=builder /usr/local/bin /usr/local/bin
+
+# Copy project source
+COPY . .
+
+# Make scripts executable
+RUN chmod +x *.sh 2>/dev/null || true
+
+# Create working directories
+RUN mkdir -p cache
+
+# Default command: verify the paper reproduces. The previous default was
+# `python3 dashboard.py`, which reported the status of the fabrication-era
+# synthetic datasets -- so `docker run` on this image showed a reader the
+# retracted project's data as though it were the release.
+CMD ["python3", "verify_like_ci.py"]

@@ -1,0 +1,222 @@
+"""Are the paper's superlatives still the maxima they claim to be?
+
+A superlative is the one kind of claim that can be falsified by adding data
+without touching the sentence. Every other number in the paper goes stale
+visibly -- it stops matching its source. "The largest effect in this study"
+stops being true when some *other* run gets larger, and nothing about the
+sentence, its source, or its analysis changes.
+
+The paper carried one that had gone false exactly this way. Sycophancy was
+written up as "the largest tuning effect in this entire study" at +0.46, which
+it is on the 13-family panel; the Chinese replication, added later, has three
+probe-level changes above it (verbosity +0.76, rubric order +0.64, score ID
++0.47) on four families. The claim is now scoped to the panel and names the
+exception, and this recomputes both halves.
+
+Each superlative here is recomputed over every released measurement of the same
+kind rather than compared against a stored maximum, because a stored maximum is
+a second place for the same staleness to hide.
+"""
+
+import json
+import re
+from pathlib import Path
+
+import pytest
+
+REPO = Path(__file__).resolve().parent.parent
+REPRO = REPO / "paper" / "honest" / "repro"
+MACROS = REPO / "paper" / "honest" / "macros.tex"
+PAPER_TEX = REPO / "paper" / "honest" / "scoring_bias_v2.tex"
+
+PANEL_FAMILIES = 13
+
+
+def _load(name):
+    path = REPRO / name
+    if not path.exists():
+        pytest.skip(f"[repro] {name} not present")
+    return json.loads(path.read_text())
+
+
+def _prose():
+    if not MACROS.exists():
+        pytest.skip("[paper] macros.tex not present")
+    return MACROS.read_text(encoding="utf-8", errors="replace")
+
+
+def _tuning_effects():
+    """(source, probe, n_families, mean_change) for every released per-probe effect."""
+    effects = []
+    for path in sorted(REPRO.glob("*_analysis.json")):
+        blob = json.loads(path.read_text())
+        for probe, stats in (blob.get("per_probe") or {}).items():
+            if "mean_change" in stats:
+                effects.append((path.name, probe, stats.get("n_families"),
+                                stats["mean_change"]))
+    summary = _load("results_peritem.json")["summary"]
+    for probe, stats in summary.items():
+        effects.append(("results_peritem.json", probe, stats["n_families"],
+                        stats["mean_change"]))
+    if not effects:
+        pytest.skip("[repro] no per-probe tuning effects found")
+    return effects
+
+
+def test_sycophancy_is_the_largest_effect_on_the_panel():
+    effects = _tuning_effects()
+    panel = [e for e in effects if e[2] == PANEL_FAMILIES]
+    assert len(panel) >= 6, (
+        f"only {len(panel)} panel-wide probe effects found; the superlative "
+        f"would be over a set too small to mean anything"
+    )
+    source, probe, _, change = max(panel, key=lambda e: e[3])
+    assert probe == "sycophancy", (
+        f"the paper calls sycophancy the largest tuning effect on the panel; "
+        f"the largest is now {probe} at {change:+.3f} ({source})"
+    )
+
+
+def test_the_larger_effects_elsewhere_are_disclosed():
+    """Anything above the panel maximum has to be named, not quietly outranked."""
+    effects = _tuning_effects()
+    panel_max = max(e[3] for e in effects if e[2] == PANEL_FAMILIES)
+    bigger = sorted((e for e in effects if e[3] > panel_max),
+                    key=lambda e: -e[3])
+    prose = _prose()
+    if not bigger:
+        pytest.skip("[repro] nothing outranks the panel maximum")
+
+    undisclosed = []
+    for source, probe, families, change in bigger:
+        if f"{change:+.2f}".replace("+", "$+") not in prose and f"{change:.2f}" not in prose:
+            undisclosed.append(f"{probe}={change:+.3f} ({source})")
+    assert not undisclosed, (
+        f"these exceed the panel maximum of {panel_max:+.3f} and the paper does "
+        f"not state them: {undisclosed}. A scoped superlative is only honest "
+        f"while the exceptions outside its scope are named."
+    )
+
+
+def test_the_abstract_carries_the_same_scope_as_the_body():
+    """A claim scoped in its section and left bare in the abstract.
+
+    This happened twice. The sycophancy superlative was corrected in its own
+    section and stayed unscoped in the abstract and the discussion until a sweep
+    found them. The frontier group comparison was corrected in its section and
+    stayed unqualified in the abstract until the built PDF was read.
+
+    Both are the same mistake: the section is where the claim gets fixed, the
+    abstract is where it gets read. Each scoped claim is required to carry its
+    qualifier in both places.
+    """
+    body = _prose()
+    if not PAPER_TEX.exists():
+        pytest.skip("[paper] source not present")
+    tex = " ".join(PAPER_TEX.read_text(encoding="utf-8", errors="replace").split())
+    abstract = re.search(r"\\begin\{abstract\}(.*?)\\end\{abstract\}", tex, re.S)
+    if not abstract:
+        pytest.skip("[paper] no abstract")
+    abstract = abstract.group(1)
+
+    # (claim in the abstract, the qualifier it must carry, why)
+    # (claim, qualifier required in the abstract, token the body scopes it with, why)
+    SCOPED = [
+        ("largest tuning effect", "on the panel", "panel",
+         "the Chinese replication holds larger per-probe effects"),
+        ("most confident", "as a group", "as a group",
+         "one frontier judge is out-decisived by open cells"),
+    ]
+    missing = []
+    for claim, qualifier, _, why in SCOPED:
+        if claim in abstract and qualifier not in abstract:
+            missing.append(f"{claim!r} needs {qualifier!r} ({why})")
+    assert not missing, (
+        f"the abstract states scoped claims without their scope: {missing}. The "
+        f"section is where a claim gets corrected; the abstract is where it gets "
+        f"read."
+    )
+    for claim, _, body_token, _ in SCOPED:
+        if claim in abstract:
+            assert body_token in body or body_token in tex, (
+                f"the body no longer scopes {claim!r} with {body_token!r}; this "
+                f"check is comparing the abstract against nothing"
+            )
+
+
+def test_the_instruct_side_comparison_holds():
+    """"larger than any of the original five probes" -- the second half."""
+    summary = _load("results_peritem.json")["summary"]
+    probes2 = _load("results_probes2_analysis.json")["per_probe"]
+    if "sycophancy" not in probes2:
+        pytest.skip("[repro] sycophancy not present")
+    syco = probes2["sycophancy"]["mean_instruct"]
+    originals = {p: s["instruct_mean_delta"] for p, s in summary.items()}
+    biggest = max(originals, key=originals.get)
+    assert syco > originals[biggest], (
+        f"the paper says sycophancy's instruct-side bias ({syco}) exceeds any "
+        f"of the original five probes; {biggest} is now {originals[biggest]}"
+    )
+    assert f"${syco:.2f}$" in _prose(), (
+        f"the paper no longer quotes sycophancy's instruct-side bias as "
+        f"{syco:.2f}"
+    )
+
+
+def test_the_frontier_maximum_is_the_maximum():
+    """"the largest biases measured anywhere in this project" -- the frontier trio."""
+    prose = _prose()
+    match = re.search(
+        r"rubric-order \$\\Delta\$ of \$?([\d.]+)\$?, \$?([\d.]+)\$?, and \$?([\d.]+)\$?",
+        prose,
+    )
+    if not match:
+        pytest.skip("[paper] the frontier maxima are not stated in that form")
+    stated = max(float(g) for g in match.groups())
+
+    judges = _load("results_closed_analysis.json")["judges"]
+    rubric = {name: j["delta_by_probe"]["rubric_order"] for name, j in judges.items()}
+    assert len(rubric) == 3, (
+        f"the sentence names three frontier judges; the release has {sorted(rubric)}"
+    )
+    assert abs(max(rubric.values()) - stated) < 0.005, (
+        f"the paper states a largest frontier rubric-order bias of {stated}; "
+        f"the released maximum is {max(rubric.values()):.3f}"
+    )
+
+    # "the largest biases measured anywhere in this project" -- against the
+    # open panel it is being compared with, per cell, not against its own trio.
+    panel = _load("results_peritem.json")["summary"]
+    panel_max = max(s["instruct_mean_delta"] for s in panel.values())
+    assert max(rubric.values()) > panel_max, (
+        f"the frontier maximum ({max(rubric.values())}) no longer exceeds the "
+        f"panel's largest mean bias ({panel_max})"
+    )
+
+
+def test_the_frontier_comparison_states_its_own_exceptions():
+    """"as a group the most confident ... a group comparison, not cell-by-cell."
+
+    The group means are true. Read as a claim about individual judges it is
+    not: the least decisive frontier judge is out-decisived by open cells. The
+    paper now says how many, and that count is recomputed here -- a disclosure
+    with a stale number attached is worse than none, because it looks checked.
+    """
+    prose = _prose()
+    judges = _load("results_closed_analysis.json")["judges"]
+    entropies = {name: j["mean_entropy"] for name, j in judges.items()}
+    open_cells = _load("results_mechanism.json")["link_points"]["entropy"]
+
+    least_decisive = max(entropies.values())
+    beating = sum(1 for e in open_cells if e < least_decisive)
+    assert f"{beating} of the {len(open_cells)} open cells" in prose, (
+        f"the paper states how many open cells are more decisive than the least "
+        f"decisive frontier judge; recomputed that is {beating} of "
+        f"{len(open_cells)}"
+    )
+
+    others = sorted(v for v in entropies.values() if v != least_decisive)
+    assert all(min(open_cells) > v for v in others), (
+        f"the paper says no open cell reaches the two GPT-4o judges "
+        f"({others}); the most decisive open cell is {min(open_cells)}"
+    )

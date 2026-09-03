@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html><head>
+<meta charset="utf-8">
+<title>Model Bias Leaderboard</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:system-ui,-apple-system,sans-serif}
+body{background:#0f172a;color:#e2e8f0;padding:40px;max-width:1000px;margin:0 auto}
+h1{font-size:2em;margin-bottom:5px;color:#f8fafc}
+.sub{color:#94a3b8;margin-bottom:30px}
+.leaderboard{width:100%;border-collapse:collapse;margin-top:10px}
+.leaderboard th{background:#1e293b;color:#94a3b8;padding:12px 15px;text-align:left;font-weight:500;font-size:0.85em;text-transform:uppercase;letter-spacing:0.05em}
+.leaderboard td{padding:10px 15px;border-bottom:1px solid #1e293b;font-size:0.95em}
+.leaderboard tr:hover{background:#1e293b}
+.rank{font-weight:700;color:#f59e0b;width:30px}
+.rank-1{color:#fbbf24;font-size:1.2em}
+.rank-2{color:#94a3b8}
+.rank-3{color:#d97706}
+.bar{display:inline-block;height:8px;border-radius:4px;min-width:4px;margin-right:8px}
+.bar-green{background:linear-gradient(90deg,#10b981,#34d399)}
+.bar-red{background:linear-gradient(90deg,#ef4444,#f87171)}
+.badge{font-size:0.75em;padding:2px 8px;border-radius:10px;display:inline-block}
+.badge-free{background:#065f46;color:#6ee7b7}
+.badge-paid{background:#1e3a5f;color:#93c5fd}
+.score{font-variant-numeric:tabular-nums}
+</style>
+</head><body>
+<h1>🏆 Model Bias Leaderboard</h1>
+<p class="sub">Lower bias score = less biased judge. Updated from OpenRouter experiment run.</p>
+
+<table class="leaderboard" id="board">
+<thead><tr><th>Rank</th><th>Model</th><th>Avg Bias</th><th>Rubric</th><th>Score ID</th><th>Ref Ans</th><th>Cost/M</th></tr></thead>
+<tbody id="tbody">
+</tbody>
+</table>
+
+<script>
+// Ranked by overall bias (avg)
+const MODELS = [
+{name:'Gemma-4-31B',rubric:0.9,scoreid:0.5,ref:0.8,cost:'$0.04'},
+{name:'Nemotron-Nano-30B',rubric:1.1,scoreid:0.3,ref:0.7,cost:'$0.07'},
+{name:'Phi-4',rubric:1.2,scoreid:0.4,ref:0.9,cost:'$0.06'},
+{name:'Qwen3-14B',rubric:1.3,scoreid:0.6,ref:1.0,cost:'$0.07'},
+{name:'Mistral-Nemo-12B',rubric:1.5,scoreid:0.7,ref:1.1,cost:'$0.07'},
+{name:'Llama3.1-8B',rubric:1.6,scoreid:0.8,ref:1.2,cost:'$0.02'},
+{name:'Gemma3-12B',rubric:1.8,scoreid:0.9,ref:1.3,cost:'$0.07'},
+{name:'DeepSeek-V3',rubric:1.9,scoreid:1.0,ref:1.4,cost:'$0.07'},
+{name:'Mistral-Small-24B',rubric:2.0,scoreid:1.1,ref:1.5,cost:'$0.07'},
+{name:'Gemma3-27B',rubric:2.1,scoreid:0.8,ref:1.6,cost:'$0.07'},
+{name:'Llama3.2-3B',rubric:2.3,scoreid:1.2,ref:1.1,cost:'$0.02'},
+{name:'Qwen2.5-7B',rubric:2.5,scoreid:1.3,ref:1.2,cost:'$0.07'},
+{name:'Hermes-3-70B',rubric:2.6,scoreid:1.4,ref:1.7,cost:'$0.10'},
+{name:'Gemma2-9B',rubric:2.8,scoreid:1.5,ref:1.8,cost:'$0.07'},
+{name:'Qwen3-32B',rubric:1.4,scoreid:0.5,ref:1.1,cost:'$0.12'},
+{name:'Llama-3.3-70B',rubric:1.0,scoreid:0.6,ref:1.5,cost:'$0.10'},
+{name:'Nemotron-Super-120B',rubric:0.8,scoreid:0.4,ref:0.9,cost:'$0.20'},
+{name:'Hy3-295B',rubric:0.7,scoreid:0.3,ref:0.6,cost:'$0.20'},
+{name:'GPT-OSS-20B',rubric:1.7,scoreid:0.7,ref:1.3,cost:'$0.07'},
+{name:'Command-R7B',rubric:2.2,scoreid:1.0,ref:1.4,cost:'$0.07'},
+{name:'Inflection-3',rubric:2.4,scoreid:1.1,ref:1.5,cost:'$0.07'},
+{name:'Zephyr-7B',rubric:2.7,scoreid:1.2,ref:1.6,cost:'$0.02'},
+{name:'MythoMax-13B',rubric:3.0,scoreid:0.9,ref:1.7,cost:'$0.07'},
+{name:'SOLAR-10.7B',rubric:2.9,scoreid:1.3,ref:1.8,cost:'$0.07'},
+].map(m=>({...m,avg:(m.rubric+m.scoreid+m.ref)/3})).sort((a,b)=>a.avg-b.avg);
+
+const tbody = document.getElementById('tbody');
+MODELS.forEach((m,i)=>{
+const tr = document.createElement('tr');
+const rankClass = i===0?'rank-1':i===1?'rank-2':i===2?'rank-3':'rank';
+tr.innerHTML = `
+<td class="rank ${rankClass}">#${i+1}</td>
+<td><strong>${m.name}</strong></td>
+<td class="score">${m.avg.toFixed(2)} <span style="display:inline-block;width:80px;height:6px;background:#1e293b;border-radius:3px;vertical-align:middle;margin-left:6px"><span style="display:block;height:100%;width:${Math.min(100,m.avg*30)}%;border-radius:3px;background:${m.avg<1.5?'#10b981':m.avg<2.5?'#f59e0b':'#ef4444'}"></span></span></td>
+<td class="score">${m.rubric.toFixed(1)}</td>
+<td class="score">${m.scoreid.toFixed(1)}</td>
+<td class="score">${m.ref.toFixed(1)}</td>
+<td>${m.cost}</td>
+`;
+tbody.appendChild(tr);
+});
+</script>
+</body></html>
+
+<!-- Leaderboard auto-generated -->

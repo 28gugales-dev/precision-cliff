@@ -1,0 +1,611 @@
+{
+  "source": "results_scaled_cpu_rerun.json",
+  "reference": "results_scaled.json",
+  "rerun_env": {
+    "torch": "2.14.0+cpu",
+    "transformers": "4.49.0",
+    "device": "cpu",
+    "gpu": null,
+    "cpu": "Intel(R) Xeon(R) Processor @ 2.10GHz",
+    "threads": 4,
+    "note": "CPU replication of results_scaled.json"
+  },
+  "rerun_dtype": {
+    "SmolLM2-135M/base": "float32",
+    "SmolLM2-135M/instruct": "float32",
+    "SmolLM2-360M/base": "float32",
+    "SmolLM2-360M/instruct": "float32",
+    "Qwen2.5-0.5B/base": "float32",
+    "Qwen2.5-0.5B/instruct": "float32",
+    "Falcon3-1B/base": "bfloat16",
+    "Falcon3-1B/instruct": "bfloat16",
+    "Qwen2.5-1.5B/base": "bfloat16",
+    "Qwen2.5-1.5B/instruct": "bfloat16",
+    "SmolLM2-1.7B/base": "bfloat16",
+    "SmolLM2-1.7B/instruct": "bfloat16",
+    "Granite-3.1-2B/base": "bfloat16",
+    "Granite-3.1-2B/instruct": "bfloat16",
+    "Qwen2.5-3B/base": "bfloat16",
+    "Qwen2.5-3B/instruct": "bfloat16",
+    "Falcon3-3B/base": "bfloat16",
+    "Falcon3-3B/instruct": "bfloat16",
+    "StableLM-2-1.6B/base": "bfloat16",
+    "StableLM-2-1.6B/instruct": "bfloat16"
+  },
+  "n_families_compared": 10,
+  "families": [
+    "SmolLM2-135M",
+    "SmolLM2-360M",
+    "Qwen2.5-0.5B",
+    "Falcon3-1B",
+    "Qwen2.5-1.5B",
+    "SmolLM2-1.7B",
+    "Granite-3.1-2B",
+    "Qwen2.5-3B",
+    "Falcon3-3B",
+    "StableLM-2-1.6B"
+  ],
+  "probes_compared": [
+    "rubric_order",
+    "score_id",
+    "reference_answer",
+    "authority",
+    "verbosity"
+  ],
+  "probes_new_only": [
+    "antonym"
+  ],
+  "per_item_abs_diff": {
+    "n": 15000,
+    "mean": 0.01393,
+    "median": 0.0078,
+    "p95": 0.0459,
+    "max": 0.3266
+  },
+  "argmax_agreement": 0.9762,
+  "delta_abs_diff": {
+    "mean": 0.01002,
+    "max": 0.0577
+  },
+  "effect_sign_agreement": 1.0,
+  "n_cells": 50,
+  "per_probe_headline": {
+    "rubric_order": {
+      "mean_effect_new": 0.0219,
+      "mean_effect_old": 0.0294,
+      "families_positive_new": 5,
+      "families_positive_old": 5,
+      "n": 10
+    },
+    "score_id": {
+      "mean_effect_new": 0.2776,
+      "mean_effect_old": 0.2908,
+      "families_positive_new": 7,
+      "families_positive_old": 7,
+      "n": 10
+    },
+    "reference_answer": {
+      "mean_effect_new": 0.2469,
+      "mean_effect_old": 0.2464,
+      "families_positive_new": 6,
+      "families_positive_old": 6,
+      "n": 10
+    },
+    "authority": {
+      "mean_effect_new": 0.3118,
+      "mean_effect_old": 0.3075,
+      "families_positive_new": 8,
+      "families_positive_old": 8,
+      "n": 10
+    },
+    "verbosity": {
+      "mean_effect_new": 0.1863,
+      "mean_effect_old": 0.1829,
+      "families_positive_new": 9,
+      "families_positive_old": 9,
+      "n": 10
+    }
+  },
+  "cells": [
+    {
+      "family": "SmolLM2-135M",
+      "probe": "rubric_order",
+      "delta_base_new": 0.0128,
+      "delta_base_old": 0.0111,
+      "delta_inst_new": 0.1623,
+      "delta_inst_old": 0.165,
+      "effect_new": 0.1495,
+      "effect_old": 0.1539
+    },
+    {
+      "family": "SmolLM2-135M",
+      "probe": "score_id",
+      "delta_base_new": 1.6077,
+      "delta_base_old": 1.6088,
+      "delta_inst_new": 2.6158,
+      "delta_inst_old": 2.6124,
+      "effect_new": 1.0081,
+      "effect_old": 1.0036
+    },
+    {
+      "family": "SmolLM2-135M",
+      "probe": "reference_answer",
+      "delta_base_new": 0.2175,
+      "delta_base_old": 0.2172,
+      "delta_inst_new": 0.417,
+      "delta_inst_old": 0.4191,
+      "effect_new": 0.1995,
+      "effect_old": 0.2019
+    },
+    {
+      "family": "SmolLM2-135M",
+      "probe": "authority",
+      "delta_base_new": 0.0913,
+      "delta_base_old": 0.0934,
+      "delta_inst_new": 0.5747,
+      "delta_inst_old": 0.5774,
+      "effect_new": 0.4834,
+      "effect_old": 0.484
+    },
+    {
+      "family": "SmolLM2-135M",
+      "probe": "verbosity",
+      "delta_base_new": 0.2252,
+      "delta_base_old": 0.2245,
+      "delta_inst_new": 0.2622,
+      "delta_inst_old": 0.2632,
+      "effect_new": 0.037,
+      "effect_old": 0.0387
+    },
+    {
+      "family": "SmolLM2-360M",
+      "probe": "rubric_order",
+      "delta_base_new": 0.1989,
+      "delta_base_old": 0.198,
+      "delta_inst_new": 0.2675,
+      "delta_inst_old": 0.27,
+      "effect_new": 0.0686,
+      "effect_old": 0.072
+    },
+    {
+      "family": "SmolLM2-360M",
+      "probe": "score_id",
+      "delta_base_new": 1.6403,
+      "delta_base_old": 1.6378,
+      "delta_inst_new": 2.3654,
+      "delta_inst_old": 2.3667,
+      "effect_new": 0.7251,
+      "effect_old": 0.7289
+    },
+    {
+      "family": "SmolLM2-360M",
+      "probe": "reference_answer",
+      "delta_base_new": 0.1513,
+      "delta_base_old": 0.1501,
+      "delta_inst_new": 0.0483,
+      "delta_inst_old": 0.0481,
+      "effect_new": -0.103,
+      "effect_old": -0.102
+    },
+    {
+      "family": "SmolLM2-360M",
+      "probe": "authority",
+      "delta_base_new": 0.2071,
+      "delta_base_old": 0.2083,
+      "delta_inst_new": 0.1493,
+      "delta_inst_old": 0.146,
+      "effect_new": -0.0578,
+      "effect_old": -0.0623
+    },
+    {
+      "family": "SmolLM2-360M",
+      "probe": "verbosity",
+      "delta_base_new": 0.0887,
+      "delta_base_old": 0.0874,
+      "delta_inst_new": 0.2613,
+      "delta_inst_old": 0.2609,
+      "effect_new": 0.1726,
+      "effect_old": 0.1735
+    },
+    {
+      "family": "Qwen2.5-0.5B",
+      "probe": "rubric_order",
+      "delta_base_new": 0.0672,
+      "delta_base_old": 0.0665,
+      "delta_inst_new": 0.0529,
+      "delta_inst_old": 0.0517,
+      "effect_new": -0.0143,
+      "effect_old": -0.0148
+    },
+    {
+      "family": "Qwen2.5-0.5B",
+      "probe": "score_id",
+      "delta_base_new": 1.6892,
+      "delta_base_old": 1.711,
+      "delta_inst_new": 1.0184,
+      "delta_inst_old": 1.0179,
+      "effect_new": -0.6708,
+      "effect_old": -0.6931
+    },
+    {
+      "family": "Qwen2.5-0.5B",
+      "probe": "reference_answer",
+      "delta_base_new": 0.216,
+      "delta_base_old": 0.2159,
+      "delta_inst_new": 0.0302,
+      "delta_inst_old": 0.0311,
+      "effect_new": -0.1858,
+      "effect_old": -0.1848
+    },
+    {
+      "family": "Qwen2.5-0.5B",
+      "probe": "authority",
+      "delta_base_new": 0.3122,
+      "delta_base_old": 0.3162,
+      "delta_inst_new": 0.4803,
+      "delta_inst_old": 0.4795,
+      "effect_new": 0.1681,
+      "effect_old": 0.1633
+    },
+    {
+      "family": "Qwen2.5-0.5B",
+      "probe": "verbosity",
+      "delta_base_new": 0.0931,
+      "delta_base_old": 0.0929,
+      "delta_inst_new": 0.4361,
+      "delta_inst_old": 0.4336,
+      "effect_new": 0.343,
+      "effect_old": 0.3407
+    },
+    {
+      "family": "Falcon3-1B",
+      "probe": "rubric_order",
+      "delta_base_new": 0.3127,
+      "delta_base_old": 0.3084,
+      "delta_inst_new": 0.0836,
+      "delta_inst_old": 0.0742,
+      "effect_new": -0.2291,
+      "effect_old": -0.2342
+    },
+    {
+      "family": "Falcon3-1B",
+      "probe": "score_id",
+      "delta_base_new": 1.0225,
+      "delta_base_old": 1.0207,
+      "delta_inst_new": 1.2482,
+      "delta_inst_old": 1.2699,
+      "effect_new": 0.2257,
+      "effect_old": 0.2492
+    },
+    {
+      "family": "Falcon3-1B",
+      "probe": "reference_answer",
+      "delta_base_new": 0.4446,
+      "delta_base_old": 0.4405,
+      "delta_inst_new": 0.6266,
+      "delta_inst_old": 0.6068,
+      "effect_new": 0.182,
+      "effect_old": 0.1663
+    },
+    {
+      "family": "Falcon3-1B",
+      "probe": "authority",
+      "delta_base_new": 0.2229,
+      "delta_base_old": 0.2258,
+      "delta_inst_new": 0.3915,
+      "delta_inst_old": 0.3944,
+      "effect_new": 0.1686,
+      "effect_old": 0.1686
+    },
+    {
+      "family": "Falcon3-1B",
+      "probe": "verbosity",
+      "delta_base_new": 0.2264,
+      "delta_base_old": 0.2285,
+      "delta_inst_new": 0.3696,
+      "delta_inst_old": 0.3791,
+      "effect_new": 0.1432,
+      "effect_old": 0.1506
+    },
+    {
+      "family": "Qwen2.5-1.5B",
+      "probe": "rubric_order",
+      "delta_base_new": 0.1677,
+      "delta_base_old": 0.1643,
+      "delta_inst_new": 0.2008,
+      "delta_inst_old": 0.2065,
+      "effect_new": 0.0331,
+      "effect_old": 0.0422
+    },
+    {
+      "family": "Qwen2.5-1.5B",
+      "probe": "score_id",
+      "delta_base_new": 0.6803,
+      "delta_base_old": 0.6226,
+      "delta_inst_new": 1.0579,
+      "delta_inst_old": 1.1068,
+      "effect_new": 0.3776,
+      "effect_old": 0.4842
+    },
+    {
+      "family": "Qwen2.5-1.5B",
+      "probe": "reference_answer",
+      "delta_base_new": 0.3798,
+      "delta_base_old": 0.3731,
+      "delta_inst_new": 0.7069,
+      "delta_inst_old": 0.6913,
+      "effect_new": 0.3271,
+      "effect_old": 0.3182
+    },
+    {
+      "family": "Qwen2.5-1.5B",
+      "probe": "authority",
+      "delta_base_new": 0.8054,
+      "delta_base_old": 0.8365,
+      "delta_inst_new": 0.9284,
+      "delta_inst_old": 0.8751,
+      "effect_new": 0.123,
+      "effect_old": 0.0386
+    },
+    {
+      "family": "Qwen2.5-1.5B",
+      "probe": "verbosity",
+      "delta_base_new": 0.6855,
+      "delta_base_old": 0.689,
+      "delta_inst_new": 0.3188,
+      "delta_inst_old": 0.3229,
+      "effect_new": -0.3667,
+      "effect_old": -0.3661
+    },
+    {
+      "family": "SmolLM2-1.7B",
+      "probe": "rubric_order",
+      "delta_base_new": 0.1533,
+      "delta_base_old": 0.1415,
+      "delta_inst_new": 0.088,
+      "delta_inst_old": 0.0795,
+      "effect_new": -0.0653,
+      "effect_old": -0.062
+    },
+    {
+      "family": "SmolLM2-1.7B",
+      "probe": "score_id",
+      "delta_base_new": 0.215,
+      "delta_base_old": 0.1868,
+      "delta_inst_new": 0.1056,
+      "delta_inst_old": 0.0814,
+      "effect_new": -0.1094,
+      "effect_old": -0.1054
+    },
+    {
+      "family": "SmolLM2-1.7B",
+      "probe": "reference_answer",
+      "delta_base_new": 0.4447,
+      "delta_base_old": 0.4426,
+      "delta_inst_new": 0.2405,
+      "delta_inst_old": 0.2258,
+      "effect_new": -0.2042,
+      "effect_old": -0.2168
+    },
+    {
+      "family": "SmolLM2-1.7B",
+      "probe": "authority",
+      "delta_base_new": 0.3628,
+      "delta_base_old": 0.3709,
+      "delta_inst_new": 0.2996,
+      "delta_inst_old": 0.31,
+      "effect_new": -0.0632,
+      "effect_old": -0.0609
+    },
+    {
+      "family": "SmolLM2-1.7B",
+      "probe": "verbosity",
+      "delta_base_new": 0.0249,
+      "delta_base_old": 0.0215,
+      "delta_inst_new": 0.3887,
+      "delta_inst_old": 0.3933,
+      "effect_new": 0.3638,
+      "effect_old": 0.3718
+    },
+    {
+      "family": "Granite-3.1-2B",
+      "probe": "rubric_order",
+      "delta_base_new": 0.8289,
+      "delta_base_old": 0.8464,
+      "delta_inst_new": 0.7326,
+      "delta_inst_old": 0.7248,
+      "effect_new": -0.0963,
+      "effect_old": -0.1216
+    },
+    {
+      "family": "Granite-3.1-2B",
+      "probe": "score_id",
+      "delta_base_new": 1.0783,
+      "delta_base_old": 1.0756,
+      "delta_inst_new": 0.629,
+      "delta_inst_old": 0.622,
+      "effect_new": -0.4493,
+      "effect_old": -0.4536
+    },
+    {
+      "family": "Granite-3.1-2B",
+      "probe": "reference_answer",
+      "delta_base_new": 0.1412,
+      "delta_base_old": 0.1329,
+      "delta_inst_new": 0.7344,
+      "delta_inst_old": 0.7473,
+      "effect_new": 0.5932,
+      "effect_old": 0.6144
+    },
+    {
+      "family": "Granite-3.1-2B",
+      "probe": "authority",
+      "delta_base_new": 0.4142,
+      "delta_base_old": 0.4207,
+      "delta_inst_new": 1.4647,
+      "delta_inst_old": 1.468,
+      "effect_new": 1.0505,
+      "effect_old": 1.0473
+    },
+    {
+      "family": "Granite-3.1-2B",
+      "probe": "verbosity",
+      "delta_base_new": 0.3953,
+      "delta_base_old": 0.3785,
+      "delta_inst_new": 1.1165,
+      "delta_inst_old": 1.1039,
+      "effect_new": 0.7212,
+      "effect_old": 0.7254
+    },
+    {
+      "family": "Qwen2.5-3B",
+      "probe": "rubric_order",
+      "delta_base_new": 0.6294,
+      "delta_base_old": 0.635,
+      "delta_inst_new": 0.4451,
+      "delta_inst_old": 0.4628,
+      "effect_new": -0.1843,
+      "effect_old": -0.1722
+    },
+    {
+      "family": "Qwen2.5-3B",
+      "probe": "score_id",
+      "delta_base_new": 0.5653,
+      "delta_base_old": 0.5865,
+      "delta_inst_new": 1.2289,
+      "delta_inst_old": 1.2389,
+      "effect_new": 0.6636,
+      "effect_old": 0.6524
+    },
+    {
+      "family": "Qwen2.5-3B",
+      "probe": "reference_answer",
+      "delta_base_new": 0.01,
+      "delta_base_old": 0.022,
+      "delta_inst_new": 1.5557,
+      "delta_inst_old": 1.5414,
+      "effect_new": 1.5457,
+      "effect_old": 1.5194
+    },
+    {
+      "family": "Qwen2.5-3B",
+      "probe": "authority",
+      "delta_base_new": 0.2347,
+      "delta_base_old": 0.2435,
+      "delta_inst_new": 0.3666,
+      "delta_inst_old": 0.3778,
+      "effect_new": 0.1319,
+      "effect_old": 0.1343
+    },
+    {
+      "family": "Qwen2.5-3B",
+      "probe": "verbosity",
+      "delta_base_new": 0.2701,
+      "delta_base_old": 0.2847,
+      "delta_inst_new": 0.4261,
+      "delta_inst_old": 0.3916,
+      "effect_new": 0.156,
+      "effect_old": 0.1069
+    },
+    {
+      "family": "Falcon3-3B",
+      "probe": "rubric_order",
+      "delta_base_new": 0.2306,
+      "delta_base_old": 0.2283,
+      "delta_inst_new": 0.5197,
+      "delta_inst_old": 0.5308,
+      "effect_new": 0.2891,
+      "effect_old": 0.3025
+    },
+    {
+      "family": "Falcon3-3B",
+      "probe": "score_id",
+      "delta_base_new": 1.1295,
+      "delta_base_old": 1.1243,
+      "delta_inst_new": 1.9256,
+      "delta_inst_old": 1.9471,
+      "effect_new": 0.7961,
+      "effect_old": 0.8228
+    },
+    {
+      "family": "Falcon3-3B",
+      "probe": "reference_answer",
+      "delta_base_new": 0.7121,
+      "delta_base_old": 0.6974,
+      "delta_inst_new": 1.0003,
+      "delta_inst_old": 1.0095,
+      "effect_new": 0.2882,
+      "effect_old": 0.3121
+    },
+    {
+      "family": "Falcon3-3B",
+      "probe": "authority",
+      "delta_base_new": 0.8249,
+      "delta_base_old": 0.8131,
+      "delta_inst_new": 1.6054,
+      "delta_inst_old": 1.6314,
+      "effect_new": 0.7805,
+      "effect_old": 0.8183
+    },
+    {
+      "family": "Falcon3-3B",
+      "probe": "verbosity",
+      "delta_base_new": 0.4786,
+      "delta_base_old": 0.4865,
+      "delta_inst_new": 0.6656,
+      "delta_inst_old": 0.6744,
+      "effect_new": 0.187,
+      "effect_old": 0.1879
+    },
+    {
+      "family": "StableLM-2-1.6B",
+      "probe": "rubric_order",
+      "delta_base_new": 0.3283,
+      "delta_base_old": 0.3179,
+      "delta_inst_new": 0.5964,
+      "delta_inst_old": 0.6465,
+      "effect_new": 0.2681,
+      "effect_old": 0.3286
+    },
+    {
+      "family": "StableLM-2-1.6B",
+      "probe": "score_id",
+      "delta_base_new": 0.3473,
+      "delta_base_old": 0.3259,
+      "delta_inst_new": 0.557,
+      "delta_inst_old": 0.5445,
+      "effect_new": 0.2097,
+      "effect_old": 0.2186
+    },
+    {
+      "family": "StableLM-2-1.6B",
+      "probe": "reference_answer",
+      "delta_base_new": 0.1961,
+      "delta_base_old": 0.1928,
+      "delta_inst_new": 0.0226,
+      "delta_inst_old": 0.0282,
+      "effect_new": -0.1735,
+      "effect_old": -0.1646
+    },
+    {
+      "family": "StableLM-2-1.6B",
+      "probe": "authority",
+      "delta_base_new": 0.5305,
+      "delta_base_old": 0.5229,
+      "delta_inst_new": 0.8636,
+      "delta_inst_old": 0.8667,
+      "effect_new": 0.3331,
+      "effect_old": 0.3438
+    },
+    {
+      "family": "StableLM-2-1.6B",
+      "probe": "verbosity",
+      "delta_base_new": 0.3122,
+      "delta_base_old": 0.2987,
+      "delta_inst_new": 0.4185,
+      "delta_inst_old": 0.3979,
+      "effect_new": 0.1063,
+      "effect_old": 0.0992
+    }
+  ]
+}

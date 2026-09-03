@@ -1,0 +1,34 @@
+version: '3.8'
+
+# Two services, both of which do something a reader of this repository wants:
+# run the test suite, or run everything CI runs.
+#
+# Removed: a jupyter service mounting ./notebooks and ./data, a dashboard
+# service running dashboard.py and mounting ./dashboard, and an nginx service
+# serving ./docs. None of those five directories exists, and dashboard.py served
+# the fabrication-era synthetic datasets; it is quarantined under
+# RETRACTED/legacy/scripts/. Docker would have created empty bind mounts and
+# served nothing, which is the failure mode this repository keeps finding:
+# infrastructure that looks maintained and is not.
+
+services:
+  # The test suite, the same way CI runs it.
+  test:
+    build: .
+    container_name: bias-test
+    command: ["python", "-m", "pytest", "tests/", "-q"]
+    networks:
+      - bias-net
+
+  # Everything CI checks: suite, mutation pass, credential scan, prose gate,
+  # archive build, and the regenerate-and-diff of every analysis.
+  verify:
+    build: .
+    container_name: bias-verify
+    command: ["python", "verify_like_ci.py"]
+    networks:
+      - bias-net
+
+networks:
+  bias-net:
+    driver: bridge
