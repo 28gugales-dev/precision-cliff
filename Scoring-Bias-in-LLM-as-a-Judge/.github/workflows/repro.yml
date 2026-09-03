@@ -177,6 +177,8 @@ jobs:
             paper/honest/repro/results_t10_analysis.json \
             paper/honest/repro/results_tokvar_analysis.json \
             paper/honest/repro/results_closed_analysis.json \
+            paper/honest/repro/results_antonym_analysis.json \
+            paper/honest/repro/results_cpu_rerun_analysis.json \
             paper/honest/repro/results_nulls.json \
             paper/honest/repro/results_bands.json \
             paper/honest/repro/results_readout.json \
