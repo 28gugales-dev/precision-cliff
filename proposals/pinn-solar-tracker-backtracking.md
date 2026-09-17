@@ -10,7 +10,7 @@ Single-axis trackers turn rows of solar panels through the day to follow the sun
 
 The standard backtracking formula assumes flat ground. On rolling terrain each row sits at its own height and slope, so the formula gets the angle wrong. Sometimes the rows still shade each other. Sometimes they tilt back further than they need to and miss sunlight. Both cost energy.
 
-That loss looks recoverable. The terrain does not move, so a controller that learned the shape of the site could pick a better angle for each row without new hardware. NREL has shown that better backtracking on rolling terrain can raise energy output by 1 to 2 percent (Anderson, Jensen, and Riley, 2026), so the gain is real.
+The terrain does not move, so a controller that learned the shape of the site could pick a better angle for each row without new hardware. NREL has shown that better backtracking on rolling terrain can raise energy output by 1 to 2 percent (Anderson, Jensen, and Riley, 2026).
 
 ## B. Research question
 
@@ -18,7 +18,7 @@ Can a physics-informed neural network (PINN) choose per-row tracker angles that 
 
 ## C. Hypothesis
 
-I expect the PINN to raise simulated annual energy by 1 to 3 percent over standard backtracking on sites where slope variation is above 5 percent. On flat sites the gain should be close to zero, since the flat-ground formula is already right there. Against the strongest baseline, a per-step optimizer that searches all row angles directly, I expect the PINN to land within 0.5 percent of its energy while running at least 100 times faster per step.
+I expect the PINN to raise simulated annual energy by 1 to 3 percent over standard backtracking on sites where slope variation is above 5 percent. On flat sites the gain should be close to zero, since the flat-ground formula is already right. Against the strongest baseline, a per-step optimizer that searches all row angles directly, I expect the PINN to land within 0.5 percent of its energy while running at least 100 times faster per step.
 
 ## D. Engineering goals
 
@@ -29,11 +29,11 @@ I expect the PINN to raise simulated annual energy by 1 to 3 percent over standa
 
 ## E. Why a PINN instead of a plain optimizer
 
-A fair question is why not just run an optimizer at every time step. That is one of my baselines, and it sets the ceiling for energy. But it has two problems as a controller. The angles of neighboring rows are coupled through shading, so the problem is nonlinear and has to be solved again for every row, every time step, at every site. And the answer for one site tells you nothing about the next site.
+Why not just run an optimizer at every time step? That is one of my baselines, and it sets the ceiling for energy. But neighboring rows are coupled through shading, so the problem is nonlinear and has to be solved again for every row, every time step, at every site. And the answer for one site tells you nothing about the next.
 
 NREL's linear programming method (Anderson, Jensen, and Riley, 2026) solves the speed problem by turning shade avoidance into a linear problem. But it limits the shaded fraction rather than maximizing energy directly, so it can leave energy on the table when a little shade would be worth taking for more direct sunlight.
 
-A neural network amortizes the optimization (Amos, 2023). The expensive work happens once, during training. After that, one forward pass gives the angles for every row, and the same network works on a site it has never seen. The physics part is what makes this safe: the loss includes the shading geometry and the angle limits, so the network cannot learn angles that break the physics, and it does not need labeled answers from an optimizer. If the PINN cannot beat the linear program on energy, its value has to show up as speed or generality. If it shows neither, the hypothesis is rejected.
+A neural network amortizes the optimization (Amos, 2023). The expensive work happens once, during training. After that, one forward pass gives every row's angle, and the same network works on a site it has never seen. The physics part makes this safe: the loss includes the shading geometry and the angle limits, so the network cannot learn angles that break the physics, and it needs no labeled answers from an optimizer. If the PINN cannot beat the linear program on energy, its value has to show up as speed or generality. If it shows neither, the hypothesis is rejected.
 
 ## F. Procedures
 
@@ -55,7 +55,7 @@ A neural network amortizes the optimization (Amos, 2023). The expensive work hap
 - NumPy, SciPy, pandas, and matplotlib for the shading model, the optimizer, data handling, and plots.
 - USGS 3D Elevation Program (3DEP) DEM tiles, free from The National Map.
 - NREL NSRDB hourly irradiance and weather data, with a free API key.
-- A free GPU session on Google Colab or Kaggle for training.
+- A free GPU session on Google Colab or Kaggle.
 - Git and GitHub for code and version history.
 
 No physical equipment, lab space, or purchases are needed.
@@ -66,7 +66,7 @@ All of the work is computer simulation on public datasets. There are no human su
 
 ## I. Data analysis
 
-For each site and method I will record annual energy in kWh and report the percent gain over standard backtracking. I will also report each method's gap to the per-step optimizer, which shows how much energy is still being missed. I will plot gain against terrain roughness to see where the method helps most. To check whether the gains are real, I will run a paired t-test across sites and days. I will also report the shading loss percent and the compute time per step for every method, so the speed goal is tested as carefully as the energy goal.
+For each site and method I will record annual energy in kWh and report the percent gain over standard backtracking. I will also report each method's gap to the per-step optimizer. I will plot gain against terrain roughness to see where the method helps most. To check whether the gains are real, I will run a paired t-test across sites and days. I will also report the shading loss percent and the compute time per step for every method.
 
 ## J. Acknowledgements and AI use
 
