@@ -1,5 +1,9 @@
 # Physics-Informed Neural Network for Per-Row Backtracking of Single-Axis Solar Trackers on Uneven Terrain
 
+Teacher sponsor: Lidan Zhou
+
+Start date: September 16, 2026
+
 ## A. Rationale
 
 Single-axis trackers turn rows of solar panels through the day to follow the sun. When the sun is low, one row can shade the row next to it, so trackers use backtracking: they tilt the rows back toward flat until the shadows clear, then keep following the sun.
