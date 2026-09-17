@@ -1,6 +1,6 @@
 # Physics-Informed Neural Network for Per-Row Backtracking of Single-Axis Solar Trackers on Uneven Terrain
 
-Teacher sponsor: Lidan Zhou
+Adult sponsor: Shailesh Gugale (parent)
 
 Start date: September 16, 2026
 
@@ -70,7 +70,7 @@ For each site and method I will record annual energy in kWh and report the perce
 
 ## J. Acknowledgements and AI use
 
-I thank Lidan Zhou for sponsoring this project and reviewing the plan.
+I thank my father, Shailesh Gugale, for sponsoring this project and reviewing the plan.
 
 I used an AI assistant to help edit the wording of this proposal and to check the reference list. I may also use it to help debug code. The research question, the experimental design, the code, the analysis, and the conclusions are my own work, and any AI use in the final report will be stated there too.
 
